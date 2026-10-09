@@ -1,13 +1,13 @@
-// Küçük, güvenli Markdown ayrıştırıcısı: kaynak → blok/satır içi sözdizimi ağacı → HTML.
-// Word (docx.js) aynı ağacı kullanır. Formüller (\( \), \[ \], $$ $$) kod dışında ayıklanır;
-// KaTeX yüklüyse MathML'e çevrilir (yazı tipi gerekmez), değilse kod olarak gösterilir.
-// Dipnot işaretleri (\u0002F<n>\u0002) render.js tarafından metne yerleştirilir.
+// Small, safe Markdown parser: source → block/inline syntax tree → HTML.
+// Word (docx.js) uses the same tree. Math (\( \), \[ \], $$ $$) is extracted outside code;
+// rendered to MathML when KaTeX is loaded (no fonts needed), otherwise shown as code.
+// Footnote markers (\u0002F<n>\u0002) are placed in the text by render.js.
 (() => {
   const ns = globalThis.__csi ||= {};
   const MATH = /\u0001M(\d+)\u0001/;
   const escapeHtml = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 
-  // Kod blokları ve satır içi kod dışında kalan formülleri bulur. replace(tex, display) dönüşünü yerine koyar.
+  // Finds math outside code blocks and inline code and substitutes the result of replace(tex, display).
   const SCAN = /(^|\n)([ \t]*)(`{3,}|~{3,})[^\n]*\n[\s\S]*?(?:\n[ \t]*\3[`~]*[ \t]*(?=\n|$)|$)|(`+)[^`\n][\s\S]*?\4(?!`)|\\\[([\s\S]+?)\\\]|\$\$([\s\S]+?)\$\$|\\\(([\s\S]+?)\\\)/g;
   function mapMath(source, replace) {
     return String(source).replace(SCAN, (match, _a, _b, fence, tick, display1, display2, inline) => {
@@ -17,7 +17,7 @@
     });
   }
 
-  // Obsidian / GitHub / Typora uyumlu formül sözdizimi: \( x \) → $x$, \[ x \] → $$x$$
+  // Obsidian / GitHub / Typora math syntax: \( x \) → $x$, \[ x \] → $$x$$
   const dollarMath = source => mapMath(source, (tex, display) => display ? `$$\n${tex}\n$$` : `$${tex}$`);
 
   function renderMath(tex, display) {
@@ -31,7 +31,7 @@
     return `<code class="math">${escapeHtml(display ? `\\[${tex}\\]` : `\\(${tex}\\)`)}</code>`;
   }
 
-  // ---- Blok ayrıştırma ----
+  // ---- Block parsing ----
   const LIST_ITEM = /^(\s*)([-*+]|\d{1,9}[.)])\s+(.*)$/;
   const TABLE_RULE = /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/;
   const HR = /^\s*([-*_])(\s*\1){2,}\s*$/;
@@ -93,7 +93,7 @@
     return blocks;
   }
 
-  // ---- Satır içi ayrıştırma ----
+  // ---- Inline parsing ----
   const INLINE = /(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)|!\[([^\]]*)\]\(([^)\s]+)\)|\[([^\]]+)\]\(([^)\s]+)\)|\*\*([\s\S]+?)\*\*|~~([^~\n]+)~~|(?<![*\w])\*(?![\s*])([^*\n]+?)\*(?!\*)|\u0001M(\d+)\u0001|\u0002F(\d+)\u0002/g;
   function parseInline(text) {
     const nodes = [];
@@ -115,8 +115,8 @@
     return nodes;
   }
 
-  const SAFE_LINK = /^(?:https?:\/\/|mailto:|ekler\/|#)/i;
-  const LOCAL_IMAGE = /^ekler\/[^:"]*$/;
+  const SAFE_LINK = /^(?:https?:\/\/|mailto:|attachments\/|#)/i;
+  const LOCAL_IMAGE = /^attachments\/[^:"]*$/;
   const plain = nodes => nodes.map(n => n.v ?? (n.c ? plain(n.c) : "")).join("");
 
   // ---- HTML ----
@@ -168,7 +168,7 @@
     }).join("\n");
   }
 
-  // Kaynak metni ayrıştırır: { blocks, math } (formüller yer tutucuya çevrilmiş olarak).
+  // Parses the source: { blocks, math } (with math replaced by placeholders).
   function parse(source) {
     const math = [];
     const text = mapMath(String(source).replace(/[\u0000\u0001]/g, ""), (tex, display) => {

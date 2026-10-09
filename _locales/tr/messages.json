@@ -296,7 +296,7 @@
     "message": "Tüm sohbetler"
   },
   "readmeText": {
-    "message": "conversation.json: Sunucunun döndürdüğü tüm sohbet düğümleri ve meta verileri.\nconversation.md / .html / .txt / .docx: Seçili dalın okunabilir hâli.\ngaleri.html: Sohbetlerdeki görsellerin galerisi (seçildiyse).\nekler/: Başarıyla indirilen ekler.\nindirme-raporu.json: Bulunan ekler, hatalar ve çözülemeyen medya işaretçileri.\n\nBu eklenti, ChatGPT'nin resmî olmayan dahili veri biçimlerini kullanır. Yeni medya/ek biçimleri tanınmayabilir. Raporun hatasız olması tüm eklerin bulunduğunu garanti etmez; sohbetle karşılaştırın. Süresi dolan veya silinen ekleri geri getiremez.\n"
+    "message": "conversation.json: Sunucunun döndürdüğü tüm sohbet düğümleri ve meta verileri.\nconversation.md / .html / .txt / .docx: Seçili dalın okunabilir hâli.\ngallery.html: Sohbetlerdeki görsellerin galerisi (seçildiyse).\nattachments/: Başarıyla indirilen ekler.\ndownload-report.json: Bulunan ekler, hatalar ve çözülemeyen medya işaretçileri.\n\nBu eklenti, ChatGPT'nin resmî olmayan dahili veri biçimlerini kullanır. Yeni medya/ek biçimleri tanınmayabilir. Raporun hatasız olması tüm eklerin bulunduğunu garanti etmez; sohbetle karşılaştırın. Süresi dolan veya silinen ekleri geri getiremez.\n"
   },
   "renderUntitled": {
     "message": "Adsız sohbet"

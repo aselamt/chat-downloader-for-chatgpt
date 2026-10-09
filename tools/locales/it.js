@@ -79,7 +79,7 @@ module.exports = {
   panelCopied: "Copiato ✓",
   panelCopyFailed: "Impossibile copiare",
   bulkIndexTitle: "Tutte le chat",
-  readmeText: "conversation.json: tutti i nodi della chat e i relativi metadati, come restituiti dal server.\nconversation.md / .html / .txt / .docx: versione leggibile del ramo selezionato.\ngaleri.html: galleria delle immagini delle chat (se selezionata).\nekler/: allegati scaricati correttamente.\nindirme-raporu.json: allegati trovati, errori e media non risolti.\n\nQuesta estensione usa formati di dati interni non ufficiali di ChatGPT. Nuovi tipi di media o allegati potrebbero non essere riconosciuti. Un rapporto senza errori non garantisce che tutti gli allegati siano stati trovati; confrontalo con la chat. Gli allegati scaduti o eliminati non possono essere recuperati.\n",
+  readmeText: "conversation.json: tutti i nodi della chat e i relativi metadati, come restituiti dal server.\nconversation.md / .html / .txt / .docx: versione leggibile del ramo selezionato.\ngallery.html: galleria delle immagini delle chat (se selezionata).\nattachments/: allegati scaricati correttamente.\ndownload-report.json: allegati trovati, errori e media non risolti.\n\nQuesta estensione usa formati di dati interni non ufficiali di ChatGPT. Nuovi tipi di media o allegati potrebbero non essere riconosciuti. Un rapporto senza errori non garantisce che tutti gli allegati siano stati trovati; confrontalo con la chat. Gli allegati scaduti o eliminati non possono essere recuperati.\n",
   renderUntitled: "Chat senza titolo",
   renderUser: "Tu",
   renderAssistant: "ChatGPT",

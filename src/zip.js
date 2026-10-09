@@ -1,5 +1,5 @@
-// Bağımlılıksız ZIP üreticisi: metin dosyalarını deflate ile sıkıştırır, ekleri olduğu gibi saklar.
-// ZIP32 kullanır; 4 GB / 65535 dosya sınırı aşılırsa açık bir hata verir.
+// Dependency-free ZIP writer: deflates text files and stores attachments as they are.
+// Uses ZIP32; throws a clear error past the 4 GB / 65535-file limit.
 (() => {
   const encoder = new TextEncoder();
   const table = new Uint32Array(256);

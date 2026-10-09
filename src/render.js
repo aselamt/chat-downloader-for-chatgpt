@@ -1,12 +1,12 @@
-// Sohbet verisini ortak bir blok modeline çevirir; Markdown, HTML, TXT, yazdırma (PDF) ve galeri çıktılarını üretir.
-// DOM'a dokunmaz, bu yüzden Node'da test edilebilir. markdown.js'ten sonra yüklenmelidir.
+// Turns chat data into a shared block model and produces Markdown, HTML, TXT, print (PDF) and gallery output.
+// It does not touch the DOM, so it can be tested in Node. Load it after markdown.js.
 (() => {
   const ns = globalThis.__csi ||= {};
   const FILE_ID = /(?:file-service|sediment):\/\/((?:file-|file_)[a-z0-9_-]+)/i;
   const FN_TOKEN = /\u0002F(\d+)\u0002/g;
 
-  // ChatGPT'nin metne gömdüğü özel atıf/varlık işaretlerini temizler.
-  // keepFootnotes: dipnot işaretlerini (\u0002F<n>\u0002) korur.
+  // Removes the private citation/entity markers ChatGPT embeds in text.
+  // keepFootnotes: keeps footnote markers (\u0002F<n>\u0002).
   function cleanText(text, keepFootnotes = false) {
     return String(text ?? "")
       .replace(keepFootnotes ? /[\u0000\u0001]/g : /[\u0000-\u0002]/g, "")
@@ -28,7 +28,7 @@
   const isoTime = seconds => { const d = new Date(seconds * 1000); return seconds && !Number.isNaN(d.getTime()) ? d.toISOString() : ""; };
   const isUrl = url => typeof url === "string" && /^https?:\/\//i.test(url);
 
-  // Atıf işaretlerini belge genelinde numaralanan dipnot işaretlerine çevirir; kalan bağlantılar "Kaynaklar" olur.
+  // Turns citation markers into footnote markers numbered across the document; remaining links become "Sources".
   function referencesFor(message, footnotes) {
     const used = new Map();
     const number = item => {
@@ -63,7 +63,7 @@
     return { apply, used, others };
   }
 
-  // Mesajın içeriğini {type, ...} bloklarına ayırır.
+  // Splits a message's content into {type, ...} blocks.
   function messageBlocks(message, role, isStep, footnotes, imagesOnly = false) {
     const content = message.content || {};
     const blocks = [];
@@ -112,7 +112,7 @@
     return blocks;
   }
 
-  // Canvas (canmore) araç çağrılarından belge içeriğini çıkarır; güncellemeleri son belgeye uygular.
+  // Extracts document content from Canvas (canmore) tool calls and applies updates to the latest document.
   function canvasBlock(message, canvases) {
     let payload;
     try { payload = JSON.parse(message.content?.text || ""); } catch { return null; }
@@ -137,8 +137,8 @@
     return message.author?.name || (message.recipient && message.recipient !== "all" ? message.recipient : t("renderStep"));
   }
 
-  // Seçili dalı (current_node → kök) gezer ve görünür mesajları sıralar.
-  // options.onlyIds: yalnızca bu mesajları (ve hemen öncesindeki araç adımlarını) tutar.
+  // Walks the selected branch (current_node → root) and orders the visible messages.
+  // options.onlyIds: keeps only these messages (and the tool steps right before them).
   function buildDocument(conversation, { t, report, inlineText, includeSteps, onlyIds, id }) {
     const branch = [];
     const visited = new Set();
@@ -178,7 +178,7 @@
         if (block) messages.push({ id: message.id, role: "assistant", label: t("renderAssistant"), time, model, blocks: [block] });
         if (block || !includeSteps) continue;
       }
-      // Görsel üretim araçlarının (DALL·E vb.) çıktıları sohbetin parçası olarak gösterilir.
+      // Output of image generation tools (DALL·E etc.) is shown as part of the chat.
       const toolImages = author === "tool" && type === "multimodal_text" && (message.content.parts || []).some(part => part?.content_type === "image_asset_pointer");
       const isStep = !toolImages && (author === "tool" ||
         (author === "assistant" && (type === "code" || recipient !== "all" || ["thoughts", "reasoning_recap"].includes(type))));
@@ -188,7 +188,7 @@
       for (const block of blocks) {
         const file = block.type === "image" && block.fileId ? filesById.get(block.fileId) : null;
         if (file?.status === "downloaded") block.src = file.archive_path;
-        if (file && file.status !== "failed") shown.add(file); // başarısız görsel "Ekler" altında hata ile listelenir
+        if (file && file.status !== "failed") shown.add(file); // a failed image is listed under "Attachments" with its error
       }
       for (const file of report.attachments) {
         if (file.kind !== "sandbox" || file.status !== "downloaded" || !file.message_ids.includes(message.id)) continue;
@@ -236,7 +236,7 @@
     };
   }
 
-  // Yan paneldeki mesaj seçimi için kısa önizleme listesi.
+  // Short preview list for message selection in the side panel.
   function messageSummaries(doc) {
     return doc.messages.filter(m => m.role !== "step").map(m => {
       const block = m.blocks.find(b => b.type === "text" || b.type === "canvas" || b.type === "code");
@@ -268,7 +268,7 @@
 
   const yaml = value => JSON.stringify(String(value ?? ""));
 
-  // options.obsidian: YAML frontmatter ekler. Formüller her zaman $…$ / $$…$$ biçimine çevrilir.
+  // options.obsidian: adds YAML frontmatter. Math is always converted to $…$ / $$…$$.
   function toMarkdown(doc, { t, exportedAt, obsidian = false }) {
     const { dollarMath } = ns.markdown;
     const prose = text => dollarMath(text).replace(FN_TOKEN, "[^$1]");
@@ -344,7 +344,7 @@
   const printCodeCard = (lang, text) => `<div class="code"><div class="code-head"><span>${escapeHtml(lang || "")}</span></div><pre><code>${escapeHtml(text)}</code></pre></div>`;
   const fnLink = n => `<sup class="fn"><a href="#fn-${n}">${n}</a></sup>`;
 
-  // Geriye dönük uyumluluk: dış API'nin markdownToHtml'i kopyala düğmeli kod kartı kullanır.
+  // Backward compatibility: the public markdownToHtml uses the code card with a copy button.
   const markdownToHtml = (source, ctx = {}) => ns.markdown.toHtml(source, { codeCard: ctx.codeCard || codeCard, img: ctx.img, fn: ctx.fn || fnLink });
 
   const CSS = `:root{color-scheme:light dark;--bg:#fff;--side:#f9f9f9;--fg:#0d0d0d;--muted:#6b6b6b;--line:#e5e5e5;--hover:#ececec;--active:#ececec;--bubble:#f4f4f4;--code:#f9f9f9;--codehead:#ececec;--link:#2564c8;--chip:#f4f4f4}
@@ -385,7 +385,7 @@ sup.fn a{font-size:.72em;text-decoration:none;padding:0 .3em;border-radius:6px;b
 
   const FILE_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>';
 
-  // Kopyala düğmesi, kenar çubuğu listesi ve arama için küçük, bağımsız betik (dış kaynak yok).
+  // Small self-contained script for the copy button, sidebar list and search (no external resources).
   const PAGE_SCRIPT = `(function(){
 document.addEventListener("click",function(e){var b=e.target.closest("[data-copy]");if(!b)return;var c=b.closest(".code").querySelector("code").textContent;
 (navigator.clipboard?navigator.clipboard.writeText(c):Promise.reject()).then(function(){var o=b.textContent;b.textContent=b.dataset.done;setTimeout(function(){b.textContent=o},1500)},function(){})});
@@ -474,7 +474,7 @@ ${multi ? `<script src="${escapeHtml((layout.root || "") + "assets/chats.js")}">
     return body.join("\n");
   }
 
-  // layout: { mode: "single" } | { mode: "multi", root: "../../", current: "sohbetler/x/conversation.html" }
+  // layout: { mode: "single" } | { mode: "multi", root: "../../", current: "chats/x/conversation.html" }
   function toHtml(doc, { t, exportedAt, lang, layout = { mode: "single" } }) {
     labels.copy = t("renderCopy"); labels.done = t("renderCopied");
     const meta = [doc.created, exportedAt && `${t("renderExported")}: ${exportedAt}`].filter(Boolean).join(" · ");
@@ -482,8 +482,8 @@ ${multi ? `<script src="${escapeHtml((layout.root || "") + "assets/chats.js")}">
     return pageShell({ t, lang, title: doc.title, layout, headerTitle: doc.title, meta, body: `<div class="thread">${messagesHtml(doc, ctx)}</div>` });
   }
 
-  // PDF için yazdırma sayfası: kenar çubuğu ve betik yok, görseller data: URI olarak gömülü, açık tema, sayfa sonları.
-  // items: [{ doc, images: Map(arşiv yolu → data URI) }]
+  // Print page for PDF: no sidebar or script, images embedded as data: URIs, light theme, page breaks.
+  // items: [{ doc, images: Map(archive path → data URI) }]
   const PRINT_CSS = `@page{margin:16mm 14mm}*{box-sizing:border-box}body{margin:0;color:#0d0d0d;background:#fff;font:11.5pt/1.6 ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif}
 .conv+.conv{break-before:page}h1.title{font-size:20pt;line-height:1.25;margin:0 0 4px}.meta{color:#6b6b6b;font-size:9.5pt;margin:0 0 18px}
 .msg{margin:14px 0;break-inside:auto}.msg.user .bubble{background:#f4f4f4;border-radius:14px;padding:8px 14px;margin-left:12%}.msg-meta{font-size:8.5pt;color:#8a8a8a;margin-top:2px}.msg.user .msg-meta{text-align:right}
@@ -515,14 +515,14 @@ ${sections.join("\n")}
 `;
   }
 
-  // Toplu dışa aktarmanın giriş sayfası: tam kenar çubuğu + karşılama.
+  // Landing page of a bulk export: full sidebar plus a welcome view.
   function toHtmlIndex(count, { t, lang }) {
     labels.copy = t("renderCopy"); labels.done = t("renderCopied");
     return pageShell({ t, lang, title: t("bulkIndexTitle"), layout: { mode: "multi", root: "", current: "" }, headerTitle: t("bulkIndexTitle"),
       meta: String(count), body: `<div class="landing"><div><h2>${escapeHtml(t("htmlPickChat"))}</h2><p>${escapeHtml(String(count))} ${escapeHtml(t("htmlChatsWord"))}</p></div></div>` });
   }
 
-  // Görsel galerisi. items: [{ src, conversation, href?, day }] — yollar galeri.html'e göre görelidir.
+  // Image gallery. items: [{ src, conversation, href?, day }] — paths are relative to gallery.html.
   function toGalleryHtml(items, { t, lang, multi }) {
     const figures = items.map(item => `<figure><a href="${escapeHtml(hrefFor(item.src))}"><img loading="lazy" alt="${escapeHtml(item.conversation)}" src="${escapeHtml(hrefFor(item.src))}"></a>
 <figcaption>${item.href ? `<a href="${escapeHtml(hrefFor(item.href))}">${escapeHtml(item.conversation)}</a>` : escapeHtml(item.conversation)}${item.day ? ` · ${escapeHtml(item.day)}` : ""}</figcaption></figure>`);
@@ -532,11 +532,11 @@ ${sections.join("\n")}
       headerTitle: t("galleryTitle"), meta: `${items.length} ${t("galleryImagesWord")}`, body });
   }
 
-  // Toplu arşivin Markdown dizini. rows: [{ title, day, ... }], link(row) → göreli yol
+  // Markdown index of a bulk archive. rows: [{ title, day, ... }], link(row) → relative path
   const toIndexMarkdown = (rows, { t, link }) =>
     [`# ${t("bulkIndexTitle")}`, "", ...rows.map(row => `- ${row.day} — [${escapeLabel(row.title)}](${link(row)})`), ""].join("\n");
 
-  // Kenar çubuğunun okuduğu ortak veri (assets/chats.js). chats: [{ t: başlık, h: yol, d: tarih }]
+  // Shared data read by the sidebar (assets/chats.js). chats: [{ t: title, h: path, d: date }]
   const chatsData = chats => `window.CSI_CHATS=${JSON.stringify(chats).replace(/</g, "\\u003c")};\n`;
 
   const api = { cleanText, buildDocument, messageSummaries, toMarkdown, toText, toHtml, toPrintHtml, toHtmlIndex, toGalleryHtml, toIndexMarkdown, chatsData,

@@ -79,7 +79,7 @@ module.exports = {
   panelCopied: "Kopiert ✓",
   panelCopyFailed: "Kopieren fehlgeschlagen",
   bulkIndexTitle: "Alle Chats",
-  readmeText: "conversation.json: Alle Chatknoten und Metadaten, wie vom Server geliefert.\nconversation.md / .html / .txt / .docx: Lesbare Fassung des ausgewählten Zweigs.\ngaleri.html: Galerie der Bilder in den Chats (falls ausgewählt).\nekler/: Erfolgreich heruntergeladene Anhänge.\nindirme-raporu.json: Gefundene Anhänge, Fehler und nicht auflösbare Medienverweise.\n\nDiese Erweiterung nutzt inoffizielle interne Datenformate von ChatGPT. Neue Medien-/Anhangtypen werden möglicherweise nicht erkannt. Ein fehlerfreier Bericht garantiert nicht, dass alle Anhänge gefunden wurden; vergleiche ihn mit dem Chat. Abgelaufene oder gelöschte Anhänge können nicht wiederhergestellt werden.\n",
+  readmeText: "conversation.json: Alle Chatknoten und Metadaten, wie vom Server geliefert.\nconversation.md / .html / .txt / .docx: Lesbare Fassung des ausgewählten Zweigs.\ngallery.html: Galerie der Bilder in den Chats (falls ausgewählt).\nattachments/: Erfolgreich heruntergeladene Anhänge.\ndownload-report.json: Gefundene Anhänge, Fehler und nicht auflösbare Medienverweise.\n\nDiese Erweiterung nutzt inoffizielle interne Datenformate von ChatGPT. Neue Medien-/Anhangtypen werden möglicherweise nicht erkannt. Ein fehlerfreier Bericht garantiert nicht, dass alle Anhänge gefunden wurden; vergleiche ihn mit dem Chat. Abgelaufene oder gelöschte Anhänge können nicht wiederhergestellt werden.\n",
   renderUntitled: "Unbenannter Chat",
   renderUser: "Du",
   renderAssistant: "ChatGPT",

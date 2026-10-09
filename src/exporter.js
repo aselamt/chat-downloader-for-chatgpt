@@ -1,7 +1,7 @@
-// Sohbet sekmesine enjekte edilir: sohbet/mesaj listeleri, durum paneli ve dışa aktarma akışı.
-// İlerleme yan panele mesajla bildirilir; yan panel "csi-cancel" ile durdurabilir. PDF için yazdırma sayfası
-// arka plana, "Klasöre kaydet" modunda dosyalar yan panele (csi-folder bağlantısı) gönderilir.
-// Dosya her enjeksiyonda yeniden çalışır; bu yüzden üst düzey const/let yerine IIFE kullanılır.
+// Injected into the chat tab: chat/message lists, the status panel and the export flow.
+// Progress is reported to the side panel by message; the panel can stop it with "csi-cancel". For PDF the print page
+// goes to the background; in "Save to a folder" mode files go to the side panel (csi-folder port).
+// The file runs again on every injection, so it uses an IIFE instead of top-level const/let.
 (() => {
   const t = (key, subs) => chrome.i18n.getMessage(key, subs) || key;
   const UUID = /^[a-f0-9-]{36}$/i;
@@ -14,7 +14,7 @@
     };
   }
 
-  // Oturum yoksa paylaşım bağlantıları yine de denenebilir (optional = true).
+  // Without a session, shared links can still be tried (optional = true).
   async function sessionToken(signal, optional = false) {
     try {
       const response = await fetch("/api/auth/session", { credentials: "same-origin", signal });
@@ -28,7 +28,7 @@
     }
   }
 
-  // ---- Paylaşım sayfası için yedek: ekrandaki mesajları Markdown'a çevirir ----
+  // ---- Fallback for shared pages: converts the messages on screen to Markdown ----
   function domToMarkdown(root) {
     const walk = node => {
       if (node.nodeType === 3) return node.nodeValue;
@@ -95,7 +95,7 @@
     return parent ? { title, mapping, current_node: parent } : null;
   }
 
-  // ---- Yan panel için listeler ----
+  // ---- Lists for the side panel ----
   globalThis.chatGPTListConversations = async function listForPanel() {
     try {
       const { core } = globalThis.__csi || {};
@@ -184,7 +184,7 @@
     host.style.cssText = "position:fixed;bottom:20px;right:20px;z-index:2147483647;max-width:calc(100vw - 40px)";
     const shadow = host.attachShadow({ mode: "open" });
     const style = document.createElement("style");
-    // ChatGPT paleti: açık temada beyaz/siyah, koyu temada #212121 zemin ve beyaz birincil düğme.
+    // ChatGPT palette: white/black in light theme; #212121 background and a white primary button in dark theme.
     style.textContent = `:host{all:initial}
 [hidden]{display:none!important}
 section{--bg:#fff;--fg:#0d0d0d;--muted:#6b6b6b;--line:#e5e5e5;--hover:#f4f4f4;--btn:#0d0d0d;--btn-fg:#fff;--focus:#2564c8;
@@ -261,7 +261,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offs
       docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" };
     const encoder = new TextEncoder();
 
-    // PDF: data: URI'li yazdırma sayfası arka plana gönderilir; yeni sekmede yazdırma penceresi açılır.
+    // PDF: the print page with data: URIs goes to the background; the print dialog opens in a new tab.
     async function openPrint(items) {
       update(t("statusPdf"), null);
       const printItems = items.map(({ doc, images }) => ({ doc, images: new Map([...images].map(([path, data]) => {
@@ -273,7 +273,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offs
       if (!response?.ok) throw new Error(response?.error || t("errPrint"));
     }
 
-    // "Klasöre kaydet": dosyalar yan panele parça parça gönderilir; her parça onaylanınca sıradaki gider.
+    // "Save to a folder": files are sent to the side panel in chunks; the next chunk goes once the previous one is acknowledged.
     async function sendToFolder(entries, manifest) {
       const port = chrome.runtime.connect({ name: "csi-folder" });
       const waiting = [];
@@ -310,7 +310,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offs
       }
     }
 
-    // Biten sohbetleri yan panele bildirir (artımlı yedek için).
+    // Reports finished chats to the side panel (for incremental backups).
     const finish = (message, exported = []) => {
       update(message, 1);
       notify("done", message, 1, { exported });
@@ -325,7 +325,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offs
       const downloadFormats = opts.formats.filter(format => format !== "pdf");
       const folder = opts.saveMode === "folder";
 
-      // Klasör modunda tek sohbet de arşiv düzeniyle (sohbetler/<klasör>/…) yazılır; böylece sonraki yedeklerle birleşir.
+      // In folder mode a single chat also uses the archive layout (chats/<folder>/…) so it merges with later backups.
       if (opts.scope === "current" && !folder) {
         update(t("statusFetching"));
         let conversation;
@@ -338,7 +338,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offs
           }
         }
         const result = await core.exportConversation({ id: target.id, ctx, opts: { ...opts, share }, conversation });
-        const base = `${core.clean(result.title, "sohbet")}-${target.id.slice(0, 8)}`;
+        const base = `${core.clean(result.title, "chat")}-${target.id.slice(0, 8)}`;
         const galleryHtml = opts.gallery
           ? render.toGalleryHtml(result.gallery.map(item => ({ ...item, href: result.names.html || result.names.md })), { t, lang: ctx.lang, multi: false }) : null;
         if (opts.formats.includes("pdf")) await openPrint([result.print]);
@@ -353,9 +353,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offs
           return;
         }
         const entries = [...result.entries];
-        if (galleryHtml) entries.push({ name: "galeri.html", data: encoder.encode(galleryHtml) });
-        if (result.needsReport) entries.push({ name: "indirme-raporu.json", data: encoder.encode(JSON.stringify(result.report, null, 2)) });
-        entries.push({ name: "OKU.txt", data: encoder.encode(readme) });
+        if (galleryHtml) entries.push({ name: "gallery.html", data: encoder.encode(galleryHtml) });
+        if (result.needsReport) entries.push({ name: "download-report.json", data: encoder.encode(JSON.stringify(result.report, null, 2)) });
+        entries.push({ name: "README.txt", data: encoder.encode(readme) });
         update(t("statusZipping"), 0);
         offerFile(await zipWithProgress(entries), `${base}.zip`, result.text.md);
         const failed = result.report.attachments.filter(item => item.status === "failed").length;
@@ -364,8 +364,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offs
         return;
       }
 
-      // Tüm sohbetler / yan panelde seçilenler / klasöre kaydedilen açık sohbet.
-      // "Tümü" ekleri indirmez (bellek ve hız sınırı); galeri açıksa yalnızca görseller indirilir.
+      // All chats / chats picked in the side panel / the open chat saved to a folder.
+      // "All" skips attachments (memory and rate limits); with the gallery on, only images are downloaded.
       let conversations;
       if (opts.scope === "choose") conversations = selection;
       else if (opts.scope === "current") conversations = [{ id: target.id, title: document.title.replace(/^ChatGPT\s*[-–—|]\s*/i, ""), update_time: "", share: target.share }];
@@ -394,13 +394,13 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offs
           const loadedTitle = conversation?.title || label;
           const updated = conversation?.update_time ? new Date(conversation.update_time * 1000).toLocaleDateString("sv") : "";
           const day = item.update_time ? String(item.update_time).slice(0, 10) : updated || dateStamp;
-          const folderName = `${day}-${core.clean(loadedTitle, "sohbet").slice(0, 50)}-${item.id.slice(0, 8)}`;
-          const result = await core.exportConversation({ id: item.id, ctx, opts: { ...bulkOpts, share: Boolean(item.share) }, prefix: `sohbetler/${folderName}/`, conversation });
+          const folderName = `${day}-${core.clean(loadedTitle, "chat").slice(0, 50)}-${item.id.slice(0, 8)}`;
+          const result = await core.exportConversation({ id: item.id, ctx, opts: { ...bulkOpts, share: Boolean(item.share) }, prefix: `chats/${folderName}/`, conversation });
           entries.push(...result.entries);
           if (result.print) printItems.push(result.print);
           const row = { id: item.id, title: result.title, day: day === dateStamp && !item.update_time ? render.formatTime(result.conversation.update_time).slice(0, 10) || day : day, folder: folderName, md: result.names.md || "", html: result.names.html || "" };
           index.push(row);
-          const href = row.html ? `sohbetler/${folderName}/${row.html}` : row.md ? `sohbetler/${folderName}/${row.md}` : "";
+          const href = row.html ? `chats/${folderName}/${row.html}` : row.md ? `chats/${folderName}/${row.md}` : "";
           gallery.push(...result.gallery.map(image => ({ ...image, id: item.id, href, day: row.day })));
           exported.push({ id: item.id, update_time: item.update_time || (result.conversation.update_time ? new Date(result.conversation.update_time * 1000).toISOString() : "") });
         } catch (error) {
@@ -414,24 +414,24 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offs
       if (!downloadFormats.length && !opts.gallery) { finish(index.length ? t("statusDonePdf") : doneMessage(), exported); return; }
 
       if (folder) {
-        // Dizin dosyaları (index, kenar çubuğu, galeri) yan panelde mevcut arşivle birleştirilerek yazılır.
+        // Index files (index, sidebar, gallery) are merged with the existing archive and written by the side panel.
         await sendToFolder(entries, { rows: index, gallery, formats: downloadFormats, failures, lang: ctx.lang });
         finish(doneMessage(), exported);
         return;
       }
       if (!index.length) { finish(doneMessage(), exported); return; }
       const linkFormat = downloadFormats.find(format => format === "md" || format === "html") || downloadFormats[0];
-      const link = row => ["sohbetler", row.folder, linkFormat === "md" ? row.md : linkFormat === "html" ? row.html : `conversation.${linkFormat}`].map(encodeURIComponent).join("/");
+      const link = row => ["chats", row.folder, linkFormat === "md" ? row.md : linkFormat === "html" ? row.html : `conversation.${linkFormat}`].map(encodeURIComponent).join("/");
       entries.push({ name: "index.md", data: encoder.encode(render.toIndexMarkdown(index, { t, link })) });
       if (downloadFormats.includes("html")) {
         entries.push({ name: "index.html", data: encoder.encode(render.toHtmlIndex(index.length, { t, lang: ctx.lang })) });
-        entries.push({ name: "assets/chats.js", data: encoder.encode(render.chatsData(index.map(row => ({ t: row.title, h: `sohbetler/${row.folder}/conversation.html`, d: row.day })))) });
+        entries.push({ name: "assets/chats.js", data: encoder.encode(render.chatsData(index.map(row => ({ t: row.title, h: `chats/${row.folder}/conversation.html`, d: row.day })))) });
       }
-      if (opts.gallery) entries.push({ name: "galeri.html", data: encoder.encode(render.toGalleryHtml(gallery, { t, lang: ctx.lang, multi: downloadFormats.includes("html") })) });
-      entries.push({ name: "indirme-raporu.json", data: encoder.encode(JSON.stringify({ exported_at: new Date().toISOString(), options: bulkOpts, total: conversations.length + skipped, exported: index.length, unchanged_skipped: skipped, failures }, null, 2)) });
-      entries.push({ name: "OKU.txt", data: encoder.encode(readme) });
+      if (opts.gallery) entries.push({ name: "gallery.html", data: encoder.encode(render.toGalleryHtml(gallery, { t, lang: ctx.lang, multi: downloadFormats.includes("html") })) });
+      entries.push({ name: "download-report.json", data: encoder.encode(JSON.stringify({ exported_at: new Date().toISOString(), options: bulkOpts, total: conversations.length + skipped, exported: index.length, unchanged_skipped: skipped, failures }, null, 2)) });
+      entries.push({ name: "README.txt", data: encoder.encode(readme) });
       update(t("statusZipping"), 0);
-      offerFile(await zipWithProgress(entries), `chatgpt-sohbetler-${dateStamp}.zip`);
+      offerFile(await zipWithProgress(entries), `chatgpt-chats-${dateStamp}.zip`);
       finish(doneMessage(), exported);
     }
 

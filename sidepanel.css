@@ -1,5 +1,5 @@
 :root {
-  /* ChatGPT paleti: nötr gri/siyah/beyaz; birincil düğme açıkta siyah, koyuda beyaz. */
+  /* ChatGPT palette: neutral gray/black/white; the primary button is black in light theme, white in dark. */
   color-scheme: light dark;
   --bg: #fff; --fg: #0d0d0d; --muted: #6b6b6b; --card: #fff; --line: #e5e5e5; --hover: #f4f4f4;
   --accent: #0d0d0d; --accent-fg: #fff; --accent-hover: #2f2f2f; --selected: #f4f4f4; --selected-line: #0d0d0d;
@@ -85,7 +85,7 @@ form > .toggle { margin-bottom: 8px; }
 button:focus-visible, input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .fine { margin: 10px 0 0; color: var(--muted); font-size: 10.5px; line-height: 1.5; }
 
-/* v3: mesaj seçimi, filtreler, kaydetme yeri, gelişmiş */
+/* v3: message selection, filters, save location, advanced */
 .section { margin-bottom: 14px; }
 #msg-picker { margin-top: 8px; }
 .stack { display: grid; gap: 6px; margin-bottom: 12px; }

@@ -79,7 +79,7 @@ module.exports = {
   panelCopied: "Copiado ✓",
   panelCopyFailed: "Não foi possível copiar",
   bulkIndexTitle: "Todas as conversas",
-  readmeText: "conversation.json: todos os nós da conversa e seus metadados, como retornados pelo servidor.\nconversation.md / .html / .txt / .docx: versão legível do ramo selecionado.\ngaleri.html: galeria das imagens das conversas (se selecionada).\nekler/: anexos baixados com sucesso.\nindirme-raporu.json: anexos encontrados, erros e mídias não resolvidas.\n\nEsta extensão usa formatos de dados internos não oficiais do ChatGPT. Novos tipos de mídia ou anexo podem não ser reconhecidos. Um relatório sem erros não garante que todos os anexos foram encontrados; compare com a conversa. Anexos expirados ou excluídos não podem ser recuperados.\n",
+  readmeText: "conversation.json: todos os nós da conversa e seus metadados, como retornados pelo servidor.\nconversation.md / .html / .txt / .docx: versão legível do ramo selecionado.\ngallery.html: galeria das imagens das conversas (se selecionada).\nattachments/: anexos baixados com sucesso.\ndownload-report.json: anexos encontrados, erros e mídias não resolvidas.\n\nEsta extensão usa formatos de dados internos não oficiais do ChatGPT. Novos tipos de mídia ou anexo podem não ser reconhecidos. Um relatório sem erros não garante que todos os anexos foram encontrados; compare com a conversa. Anexos expirados ou excluídos não podem ser recuperados.\n",
   renderUntitled: "Conversa sem título",
   renderUser: "Você",
   renderAssistant: "ChatGPT",

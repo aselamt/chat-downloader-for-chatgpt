@@ -1,5 +1,5 @@
-// PDF sayfası: arka plandan yazdırma HTML'ini alır, korumalı iframe'e koyar ve yazdırma penceresini açar.
-// Hedef olarak "PDF olarak kaydet" seçilir; dönüştürme tamamen tarayıcıda yapılır, sunucu yoktur.
+// PDF page: gets the print HTML from the background, puts it in a sandboxed iframe and opens the print dialog.
+// Choose "Save as PDF" as the destination; conversion happens entirely in the browser, with no server.
 const t = key => chrome.i18n.getMessage(key) || key;
 for (const element of document.querySelectorAll("[data-i18n]")) element.textContent = t(element.dataset.i18n);
 document.documentElement.lang = chrome.i18n.getUILanguage();

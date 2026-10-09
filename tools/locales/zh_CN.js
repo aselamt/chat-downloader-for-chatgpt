@@ -79,7 +79,7 @@ module.exports = {
   panelCopied: "已复制 ✓",
   panelCopyFailed: "无法复制",
   bulkIndexTitle: "全部聊天",
-  readmeText: "conversation.json：服务器返回的全部聊天节点及其元数据。\nconversation.md / .html / .txt / .docx：所选分支的可读版本。\ngaleri.html：聊天中图片的图库(如已选择)。\nekler/：成功下载的附件。\nindirme-raporu.json：找到的附件、错误和无法解析的媒体。\n\n本扩展使用 ChatGPT 非官方的内部数据格式，可能无法识别新的媒体或附件类型。报告中没有错误并不保证找到了所有附件，请与聊天对照。已过期或已删除的附件无法恢复。\n",
+  readmeText: "conversation.json：服务器返回的全部聊天节点及其元数据。\nconversation.md / .html / .txt / .docx：所选分支的可读版本。\ngallery.html：聊天中图片的图库(如已选择)。\nattachments/：成功下载的附件。\ndownload-report.json：找到的附件、错误和无法解析的媒体。\n\n本扩展使用 ChatGPT 非官方的内部数据格式，可能无法识别新的媒体或附件类型。报告中没有错误并不保证找到了所有附件，请与聊天对照。已过期或已删除的附件无法恢复。\n",
   renderUntitled: "未命名聊天",
   renderUser: "你",
   renderAssistant: "ChatGPT",

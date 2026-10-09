@@ -1,9 +1,9 @@
-// Arka plan: yan panel davranışı, kısayol, sağ tık menüsü, sayfadaki "İndir" düğmesi ve PDF yazdırma sekmesi.
+// Background: side panel behavior, keyboard shortcut, context menu, the on-page "Download" button and the PDF print tab.
 const t = key => chrome.i18n.getMessage(key) || key;
 const FILES = ["vendor/katex.min.js", "src/zip.js", "src/markdown.js", "src/render.js", "src/docx.js", "src/core.js", "src/exporter.js"];
 const CHAT_LINK = /^https:\/\/chatgpt\.com\/(?:g\/[^/]+\/)?c\/([a-f0-9-]{36})(?:[/?#]|$)/i;
 const DEFAULTS = { formats: ["md", "html"], attachments: true, textMode: "1", steps: false, obsidian: false, gallery: false };
-const prints = new Map(); // id → yazdırma HTML'i (print.html bir kez okur)
+const prints = new Map(); // id → print HTML (print.html reads it once)
 
 chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true }).catch(() => {});
 
@@ -15,7 +15,7 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-// Son yan panel ayarlarıyla açık (veya bağlantısı verilen) sohbeti indirir. Klasör modu yalnızca yan panelden çalışır.
+// Exports the open (or linked) chat with the last side panel settings. Folder mode only works from the side panel.
 async function quickExport(tab, conversationId = null) {
   if (!tab?.id) return;
   const { settings = {} } = await chrome.storage.local.get("settings");
@@ -27,7 +27,7 @@ async function quickExport(tab, conversationId = null) {
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: FILES });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: opts => globalThis.chatGPTExporter(opts), args: [options] });
   } catch (error) {
-    console.warn("Sohbet İndir:", error.message);
+    console.warn("Chat Downloader:", error.message);
   }
 }
 
@@ -42,7 +42,7 @@ chrome.commands.onCommand.addListener((command, tab) => {
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  // Yalnızca bu eklentinin kendi betiklerinden gelen mesajlar işlenir.
+  // Only messages from this extension's own scripts are handled.
   if (sender.id !== chrome.runtime.id) return;
   if (message?.type === "csi-quick-export" && sender.tab) {
     quickExport(sender.tab);

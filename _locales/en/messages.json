@@ -296,7 +296,7 @@
     "message": "All chats"
   },
   "readmeText": {
-    "message": "conversation.json: Every conversation node and its metadata as returned by the server.\nconversation.md / .html / .txt / .docx: A readable version of the selected branch.\ngaleri.html: A gallery of the images in the chats (if selected).\nekler/: Attachments that were downloaded successfully.\nindirme-raporu.json: Attachments found, errors and unresolved media pointers.\n\nThis extension relies on ChatGPT's unofficial internal data formats. New media/attachment types may not be recognized. A clean report does not guarantee every attachment was found; compare it with the chat. Expired or deleted attachments cannot be recovered.\n"
+    "message": "conversation.json: Every conversation node and its metadata as returned by the server.\nconversation.md / .html / .txt / .docx: A readable version of the selected branch.\ngallery.html: A gallery of the images in the chats (if selected).\nattachments/: Attachments that were downloaded successfully.\ndownload-report.json: Attachments found, errors and unresolved media pointers.\n\nThis extension relies on ChatGPT's unofficial internal data formats. New media/attachment types may not be recognized. A clean report does not guarantee every attachment was found; compare it with the chat. Expired or deleted attachments cannot be recovered.\n"
   },
   "renderUntitled": {
     "message": "Untitled chat"

@@ -1,10 +1,10 @@
-// DOM'dan bağımsız dışa aktarma çekirdeği: API istemcisi, ek tarama/indirme, çıktı dosyalarının üretimi.
+// DOM-independent export core: API client, attachment scanning/downloading, and output file generation.
 (() => {
   const ns = globalThis.__csi ||= {};
   const encoder = new TextEncoder();
   const FORMATS = ["md", "html", "txt", "json", "docx", "pdf"];
 
-  const clean = (name, fallback = "dosya") => String(name || fallback)
+  const clean = (name, fallback = "file") => String(name || fallback)
     .replace(/[\x00-\x1f<>:"/\\|?*]/g, "_").replace(/^\.+/, "_").replace(/[. ]+$/, "").slice(0, 150) || fallback;
 
   const sleepFor = (ms, signal) => new Promise((resolve, reject) => {
@@ -12,7 +12,7 @@
     signal?.addEventListener("abort", () => { clearTimeout(timer); reject(signal.reason); }, { once: true });
   });
 
-  // Oturum token'ı yalnızca aynı kaynağa gönderilir; dış dosya sunucusuna çerez ve token gitmez.
+  // The session token is only sent to the same origin; no cookies or token go to external file servers.
   function createClient({ fetchImpl = globalThis.fetch.bind(globalThis), origin, token, signal, sleep = sleepFor }) {
     async function request(url, init, timeout, retries = 3) {
       for (let attempt = 0; ; attempt++) {
@@ -47,7 +47,7 @@
     return { api, external };
   }
 
-  // Bilinen ek biçimleri taranır; yeni şemalar gelirse bu tarayıcı güncellenmeli.
+  // Scans known attachment shapes; update this scanner if new schemas appear.
   function scanAttachments(conversation) {
     const files = new Map();
     const unresolved = new Set();
@@ -123,8 +123,8 @@
     return new TextDecoder(encoding, { fatal: true }).decode(data);
   }
 
-  // Normal sohbetler /conversation, paylaşım bağlantıları /share uç noktasından okunur.
-  // Paylaşım yanıtı düz bir mesaj listesi (linear_conversation) olabilir; zincir hâline getirilir.
+  // Regular chats are read from /conversation, shared links from the /share endpoint.
+  // A share response may be a flat message list (linear_conversation); it is turned into a chain.
   async function loadConversation(ctx, id, { share = false } = {}) {
     const data = await (await ctx.client.api(`/backend-api/${share ? "share" : "conversation"}/${encodeURIComponent(id)}`)).json();
     if (data?.mapping && typeof data.mapping === "object") return data;
@@ -167,8 +167,8 @@
       attachments: [], unresolved_asset_pointers: [...unresolved]
     };
     const inlineText = new Map();
-    const binary = new Map(); // arşiv yolu → veri (Word/PDF/galeri için görseller)
-    // Galeri açık ama ekler kapalıysa yalnızca görseller indirilir.
+    const binary = new Map(); // archive path → data (images for Word/PDF/gallery)
+    // With the gallery on but attachments off, only images are downloaded.
     const wanted = file => opts.attachments || (opts.gallery && file.isImage);
     const download = list.filter(wanted);
     const results = new Map(list.map(file => [file, { ...file, status: "skipped" }]));
@@ -178,7 +178,7 @@
       ctx.status(t("statusAttachment", [String(finished + 1), String(download.length), file.name]), download.length ? finished / download.length : 0);
       try {
         const { name, data } = await downloadAttachment(file, id, ctx);
-        const archivePath = `ekler/${String(index + 1).padStart(3, "0")}-${clean(name)}`;
+        const archivePath = `attachments/${String(index + 1).padStart(3, "0")}-${clean(name)}`;
         entries.push({ name: prefix + archivePath, data, date });
         const result = { ...file, isImage: file.isImage || IMAGE_NAME.test(name), status: "downloaded", archive_path: archivePath, bytes: data.length };
         if (result.isImage) binary.set(archivePath, data);
@@ -199,7 +199,7 @@
     const doc = render.buildDocument(conversation, { t, report, inlineText, includeSteps: opts.steps, onlyIds, id });
     result.doc = doc;
     const exportedAt = render.formatTime(Date.now() / 1000);
-    // Toplu modda her sayfa ortak kenar çubuğunu (assets/chats.js) kullanır; tek sohbette yalnızca kendisini listeler.
+    // In bulk mode every page uses the shared sidebar (assets/chats.js); a single chat lists only itself.
     const depth = prefix.split("/").filter(Boolean).length;
     const layout = opts.sidebar === "multi" ? { mode: "multi", root: "../".repeat(depth), current: `${prefix}conversation.html` } : { mode: "single" };
     const renderCtx = { t, exportedAt, lang: ctx.lang, layout, obsidian: opts.obsidian };
@@ -211,8 +211,8 @@
     };
     for (const format of ["md", "html", "txt", "json"]) {
       if (!opts.formats.includes(format)) continue;
-      // Obsidian modunda not adı sohbet başlığıdır.
-      const name = format === "md" && opts.obsidian ? `${clean(title, "sohbet")}.md` : `conversation.${format}`;
+      // In Obsidian mode the note is named after the chat title.
+      const name = format === "md" && opts.obsidian ? `${clean(title, "chat")}.md` : `conversation.${format}`;
       result.text[format] = outputs[format]();
       result.names[format] = name;
       put(name, result.text[format]);
@@ -230,7 +230,7 @@
     return result;
   }
 
-  // Yan paneldeki mesaj seçimi için: açık sohbetin görünür mesajlarının kısa listesi.
+  // For message selection in the side panel: a short list of the open chat's visible messages.
   async function listMessages(ctx, id, { share = false } = {}) {
     const conversation = await loadConversation(ctx, id, { share });
     const doc = ns.render.buildDocument(conversation, { t: ctx.t, report: { attachments: [] }, includeSteps: false, id });
@@ -239,7 +239,7 @@
 
   const isoDate = value => typeof value === "number" ? new Date(value * 1000).toISOString() : String(value || "");
 
-  // Projeler resmî olmayan "snorlax" uç noktasından okunur; başarısız olursa sessizce atlanır.
+  // Projects are read from the unofficial "snorlax" endpoint; skipped silently on failure.
   async function listProjects(ctx) {
     const projects = [];
     try {
@@ -276,7 +276,7 @@
     return items;
   }
 
-  // Dönüş: [{ id, title, update_time (ISO), archived, project?, gpt? }]
+  // Returns: [{ id, title, update_time (ISO), archived, project?, gpt? }]
   async function listConversations(ctx, { includeArchived = true, includeProjects = true } = {}) {
     const found = new Map();
     const add = (item, extra = {}) => {

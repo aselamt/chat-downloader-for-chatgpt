@@ -1,4 +1,4 @@
-// Store görselleri için gerçekçi demo dışa aktarma (çok sohbetli kenar çubuğu): node tools/store-demo.js <klasör> [tr|en]
+// Realistic demo export for the Store screenshots (multi-chat sidebar): node tools/store-demo.js <dir> [en|tr]
 const fs = require("fs");
 const path = require("path");
 globalThis.katex = require("../vendor/katex.min.js");
@@ -28,7 +28,7 @@ const titles = lang === "en"
   : [copy.title, "Haftalık yemek planı", "Ön yazı taslağı", "Docker volume nedir?", "Lizbon gezisi: 3 gün", "E-posta doğrulama regex'i", "Doğum günü hediye fikirleri", "Toplantı notlarını özetle"];
 const doc = render.buildDocument(conversation, { t, report: { attachments: [] }, inlineText: new Map(), includeSteps: false });
 const out = process.argv[2];
-const chats = titles.map((title, i) => ({ t: title, h: `sohbetler/2025-10-0${i + 1}-demo-${i}/conversation.html`, d: `2025-10-0${i + 1}` }));
+const chats = titles.map((title, i) => ({ t: title, h: `chats/2025-10-0${i + 1}-demo-${i}/conversation.html`, d: `2025-10-0${i + 1}` }));
 for (const dir of ["assets", path.dirname(chats[0].h)]) fs.mkdirSync(path.join(out, dir), { recursive: true });
 fs.writeFileSync(path.join(out, "assets/chats.js"), render.chatsData(chats));
 fs.writeFileSync(path.join(out, chats[0].h), render.toHtml(doc, { t, exportedAt: "", lang, layout: { mode: "multi", root: "../../", current: chats[0].h } }));

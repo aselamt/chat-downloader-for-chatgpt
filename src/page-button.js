@@ -1,6 +1,6 @@
-// chatgpt.com içerik betiği: sohbet başlığındaki "Paylaş" düğmesinin yanına küçük bir "İndir" düğmesi ekler.
-// Tıklanınca son yan panel ayarlarıyla açık sohbet indirilir. Düğme yan panel ayarlarından kapatılabilir.
-// ChatGPT arayüzü değişip "Paylaş" düğmesi bulunamazsa hiçbir şey eklenmez.
+// chatgpt.com content script: adds a small "Download" button next to the "Share" button in the chat header.
+// Clicking it exports the open chat with the last side panel settings. It can be turned off in the side panel.
+// If the ChatGPT UI changes and the "Share" button is not found, nothing is added.
 (() => {
   if (globalThis.__csiPageButton) return;
   globalThis.__csiPageButton = true;

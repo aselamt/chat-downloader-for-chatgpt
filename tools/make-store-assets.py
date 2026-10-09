@@ -1,6 +1,6 @@
-"""Store görselleri: python3 tools/make-store-assets.py <ham-görseller-klasörü>
-Girdi (Chrome ekran görüntüleri; tools/e2e/extension.js ve tools/store-demo.js üretir):
-  panel-current-light[-en].png, panel-choose-light[-en].png, demo-{tr,en}.png"""
+"""Store images: python3 tools/make-store-assets.py <raw-screenshots-dir>
+Input (Chrome screenshots made by tools/e2e/extension.js and tools/store-demo.js):
+  panel-current-light-{en,tr}.png, panel-choose-light-{en,tr}.png, demo-{en,tr}.png"""
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import os, sys
 
@@ -46,7 +46,7 @@ def caption(img, title, sub, x, y, width, size=54):
         d.text((x, y), line, font=font(22), fill=(107, 107, 107)); y += 32
 
 def icon(img, xy, size):
-    ic = Image.open(os.path.join(root, "icons", "icon512.png")).resize((size, size), Image.LANCZOS)  # eklentinin kendi simgesi
+    ic = Image.open(os.path.join(root, "icons", "icon512.png")).resize((size, size), Image.LANCZOS)  # the extension's own icon
     img.paste(ic, xy, ic)
 
 texts = {
@@ -59,7 +59,7 @@ texts = {
 }
 
 def panel_image(name, lang):
-    img = Image.open(os.path.join(src, f"{name}{'' if lang == 'tr' else '-' + lang}.png")).convert("RGB")
+    img = Image.open(os.path.join(src, f"{name}-{lang}.png")).convert("RGB")
     scale = 700 / img.height
     return img.resize((int(img.width * scale), 700), Image.LANCZOS)
 
@@ -72,7 +72,7 @@ for lang in ("tr", "en"):
         panel = panel_image(panel_name, lang)
         shadowed(img, panel, (1280 - panel.width - 150, 50), radius=16)
         img.save(os.path.join(out, f"screenshot-{number}-{lang}.png"))
-    # 2) HTML arayüzü
+    # 2) HTML view
     demo = Image.open(os.path.join(src, f"demo-{lang}.png")).convert("RGB")
     demo = demo.resize((840, int(demo.height * 840 / demo.width)), Image.LANCZOS)
     img = background(1280, 800)
@@ -82,7 +82,7 @@ for lang in ("tr", "en"):
     shadowed(img, demo, (1280 - 840 - 40, (800 - demo.height) // 2), radius=14)
     img.save(os.path.join(out, f"screenshot-2-{lang}.png"))
 
-# Küçük tanıtım kutusu 440x280 (dil bağımsız)
+# Small promo tile 440x280 (language independent)
 tile = background(440, 280)
 icon(tile, (30, 30), 84)
 d = ImageDraw.Draw(tile)
@@ -90,4 +90,4 @@ d.text((30, 140), "Chat Downloader", font=font(34, True), fill=(13, 13, 13))
 d.text((30, 184), "for ChatGPT", font=font(34, True), fill=(0, 64, 245))
 d.text((30, 234), "PDF · Word · Markdown · HTML · JSON", font=font(16), fill=(107, 107, 107))
 tile.save(os.path.join(out, "promo-small-440x280.png"))
-print("görseller yazıldı:", sorted(f for f in os.listdir(out) if f.endswith(".png")))
+print("images written:", sorted(f for f in os.listdir(out) if f.endswith(".png")))

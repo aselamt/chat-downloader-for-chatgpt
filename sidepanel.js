@@ -1,5 +1,5 @@
-// Yan panel: aktif sekmeyi izler; sohbet/mesaj listelerini gösterir; dışa aktarmayı sohbet sekmesinde başlatır,
-// ilerlemeyi yansıtır; "Klasöre kaydet" modunda sekmeden gelen dosyaları seçilen klasöre yazar.
+// Side panel: tracks the active tab, shows chat/message lists, starts exports in the chat tab,
+// mirrors progress, and in "Save to a folder" mode writes the files sent by the tab into the chosen folder.
 const t = (key, subs) => chrome.i18n.getMessage(key, subs) || key;
 const $ = selector => document.querySelector(selector);
 const form = $("#export-form");
@@ -8,19 +8,19 @@ const status = $("#status");
 const FILES = ["vendor/katex.min.js", "src/zip.js", "src/markdown.js", "src/render.js", "src/docx.js", "src/core.js", "src/exporter.js"];
 const SETTING_FIELDS = ["scope", "formats", "attachments", "textMode", "steps", "obsidian", "gallery", "saveMode", "incremental", "messagesOnly"];
 
-let tab = null;                 // aktif sekme (yalnızca chatgpt.com sekmelerinin url/başlığı görünür)
+let tab = null;                 // active tab (url/title are only visible for chatgpt.com tabs)
 let windowId = null;
 let conversations = null;       // [{ id, title, update_time, archived, project, gpt }]
 let listState = "idle";         // idle | loading | error | ready
 let listError = "";
 const selected = new Set();
-let messages = null;            // açık sohbetin mesajları: { chatId, items: [{ id, role, preview, images }] }
+let messages = null;            // messages of the open chat: { chatId, items: [{ id, role, preview, images }] }
 let messageState = "idle";
 let messageError = "";
 const selectedMessages = new Set();
-let lastMessageIndex = null;    // Shift ile aralık seçimi için
+let lastMessageIndex = null;    // for Shift-click range selection
 const progressByTab = new Map(); // tabId → { state, message, fraction }
-let backupState = {};           // id → update_time (artımlı yedek)
+let backupState = {};           // id → update_time (incremental backup)
 let folderHandle = null;
 
 for (const element of document.querySelectorAll("[data-i18n]")) element.textContent = t(element.dataset.i18n);
@@ -30,13 +30,13 @@ for (const element of document.querySelectorAll("[data-i18n-aria-label]")) eleme
 document.documentElement.lang = chrome.i18n.getUILanguage();
 const uiLang = chrome.i18n.getUILanguage();
 
-let hintShown = false; // refresh() yalnızca kendi gösterdiği uyarıyı siler.
+let hintShown = false; // refresh() only clears the hint it showed itself.
 function setStatus(message, isError = false) {
   status.dataset.error = String(isError);
   status.textContent = message;
 }
 
-// ---- Ayarlar (chrome.storage: sayfa düğmesi ve sağ tık menüsü de aynı ayarları kullanır) ----
+// ---- Settings (chrome.storage; the page button and context menu use the same settings) ----
 function currentOptions() {
   const data = new FormData(form);
   return {
@@ -68,10 +68,10 @@ function applySettings(saved = {}) {
   if (saved.saveMode) form.elements.saveMode.value = saved.saveMode;
 }
 
-// ---- Klasör tanıtıcısı (IndexedDB'de saklanır; izin her oturumda kullanıcı eylemiyle yenilenir) ----
+// ---- Folder handle (kept in IndexedDB; permission is renewed by a user action each session) ----
 function idb(mode, action) {
   return new Promise((resolve, reject) => {
-    const open = indexedDB.open("sohbet-indir", 1);
+    const open = indexedDB.open("chat-downloader", 1);
     open.onupgradeneeded = () => open.result.createObjectStore("handles");
     open.onerror = () => reject(open.error);
     open.onsuccess = () => {
@@ -90,7 +90,7 @@ function renderFolder() {
 
 $("#folder-pick").addEventListener("click", async () => {
   try {
-    folderHandle = await showDirectoryPicker({ id: "sohbet-indir", mode: "readwrite" });
+    folderHandle = await showDirectoryPicker({ id: "chat-downloader", mode: "readwrite" });
     await idb("readwrite", store => store.put(folderHandle, "folder"));
   } catch (error) {
     if (error.name !== "AbortError") setStatus(error.message, true);
@@ -124,23 +124,23 @@ async function writeText(path, text) {
 
 const fromBase64 = text => Uint8Array.from(atob(text), c => c.charCodeAt(0));
 
-// Arşiv dizini: assets/arsiv.json yeni sohbetlerle birleştirilir; index.md, index.html, kenar çubuğu ve galeri yeniden yazılır.
+// Archive index: assets/archive.json is merged with new chats; index.md, index.html, the sidebar and the gallery are rewritten.
 async function writeArchiveIndex(manifest) {
   const { render } = globalThis.__csi;
-  const previous = JSON.parse(await readText("assets/arsiv.json") || "{}");
+  const previous = JSON.parse(await readText("assets/archive.json") || "{}");
   const ids = new Set(manifest.rows.map(row => row.id));
   const rows = [...manifest.rows, ...(previous.rows || []).filter(row => !ids.has(row.id))]
     .sort((a, b) => String(b.day).localeCompare(String(a.day)));
   const gallery = [...manifest.gallery, ...(previous.gallery || []).filter(item => !ids.has(item.id))];
-  await writeText("assets/arsiv.json", JSON.stringify({ updated: new Date().toISOString(), rows, gallery }, null, 2));
-  const link = row => ["sohbetler", row.folder, row.md || row.html || "conversation.json"].map(encodeURIComponent).join("/");
+  await writeText("assets/archive.json", JSON.stringify({ updated: new Date().toISOString(), rows, gallery }, null, 2));
+  const link = row => ["chats", row.folder, row.md || row.html || "conversation.json"].map(encodeURIComponent).join("/");
   await writeText("index.md", render.toIndexMarkdown(rows, { t, link }));
   const withHtml = rows.filter(row => row.html);
   if (withHtml.length) {
     await writeText("index.html", render.toHtmlIndex(withHtml.length, { t, lang: uiLang }));
-    await writeText("assets/chats.js", render.chatsData(withHtml.map(row => ({ t: row.title, h: `sohbetler/${row.folder}/${row.html}`, d: row.day }))));
+    await writeText("assets/chats.js", render.chatsData(withHtml.map(row => ({ t: row.title, h: `chats/${row.folder}/${row.html}`, d: row.day }))));
   }
-  if (gallery.length) await writeText("galeri.html", render.toGalleryHtml(gallery, { t, lang: uiLang, multi: withHtml.length > 0 }));
+  if (gallery.length) await writeText("gallery.html", render.toGalleryHtml(gallery, { t, lang: uiLang, multi: withHtml.length > 0 }));
 }
 
 chrome.runtime.onConnect.addListener(port => {
@@ -194,7 +194,7 @@ function listMessage(list, text, isError = false) {
   list.append(p);
 }
 
-// ---- Mesaj seçimi (açık sohbet) ----
+// ---- Message selection (open chat) ----
 function renderMessages() {
   const list = $("#msg-list");
   list.textContent = "";
@@ -255,7 +255,7 @@ $("#msg-list").addEventListener("click", event => {
   const input = event.target.closest("input[type=checkbox]");
   if (!input) return;
   const index = Number(input.dataset.index);
-  // Shift+tık: son tıklanandan bu satıra kadar aynı duruma getirir.
+  // Shift+click: sets every row from the last clicked one to this one to the same state.
   if (event.shiftKey && lastMessageIndex !== null) {
     const [from, to] = [Math.min(lastMessageIndex, index), Math.max(lastMessageIndex, index)];
     for (const item of messages.items.slice(from, to + 1)) input.checked ? selectedMessages.add(item.id) : selectedMessages.delete(item.id);
@@ -277,7 +277,7 @@ $("#msg-answers").addEventListener("click", () => selectMessages(item => item.ro
 $("#msg-prompts").addEventListener("click", () => selectMessages(item => item.role === "user"));
 $("#msg-none").addEventListener("click", () => selectMessages(() => false));
 
-// ---- Sohbet listesi ("Sohbet seç") ----
+// ---- Chat list ("Choose chats") ----
 function filteredConversations() {
   const query = $("#pick-search").value.trim().toLocaleLowerCase(uiLang);
   const filter = $("#pick-filter").value;
@@ -371,7 +371,7 @@ async function loadList(force = false) {
 
 for (const id of ["#pick-search", "#pick-from", "#pick-to"]) $(id).addEventListener("input", renderList);
 $("#pick-filter").addEventListener("change", renderList);
-for (const id of ["#pick-search", "#pick-from", "#pick-to"]) $(id).addEventListener("keydown", event => { if (event.key === "Enter") event.preventDefault(); }); // formu göndermesin
+for (const id of ["#pick-search", "#pick-from", "#pick-to"]) $(id).addEventListener("keydown", event => { if (event.key === "Enter") event.preventDefault(); }); // don't submit the form
 $("#pick-reload").addEventListener("click", () => loadList(true));
 $("#pick-all").addEventListener("click", () => { visibleIds().forEach(id => selected.add(id)); renderList(); refresh(); });
 $("#pick-none").addEventListener("click", () => { visibleIds().forEach(id => selected.delete(id)); renderList(); refresh(); });
@@ -382,7 +382,7 @@ $("#pick-list").addEventListener("change", event => {
   refresh();
 });
 
-// ---- İlerleme (sohbet sekmesinden gelen mesajlar) ----
+// ---- Progress (messages from the chat tab) ----
 function renderProgress() {
   const box = $("#progress");
   const entry = tab ? progressByTab.get(tab.id) : null;
@@ -423,7 +423,7 @@ $("#reset-backup").addEventListener("click", () => {
   setStatus(t("resetBackupDone"));
 });
 
-// Kapsama ve seçimlere göre arayüzü ve düğme durumunu günceller.
+// Updates the UI and button state for the scope and selections.
 function refresh() {
   const options = currentOptions();
   const { scope, formats, attachments, saveMode } = options;
@@ -477,7 +477,7 @@ form.addEventListener("submit", async event => {
   hintShown = false;
   try {
     const options = currentOptions();
-    // Klasör izni kullanıcı eyleminin hemen ardından istenmeli.
+    // Folder permission must be requested right after a user action.
     if (options.saveMode === "folder") await ensureFolderPermission();
     const kind = pageKind(tab);
     if (kind === "other" || (options.scope === "current" && kind !== "chat" && kind !== "share")) throw new Error(t(options.scope === "current" ? "errOpenChat" : "errWrongSite"));

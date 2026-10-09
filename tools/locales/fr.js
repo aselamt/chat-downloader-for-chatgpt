@@ -79,7 +79,7 @@ module.exports = {
   panelCopied: "Copié ✓",
   panelCopyFailed: "Copie impossible",
   bulkIndexTitle: "Toutes les discussions",
-  readmeText: "conversation.json : tous les nœuds de la discussion et leurs métadonnées, tels que renvoyés par le serveur.\nconversation.md / .html / .txt / .docx : version lisible de la branche sélectionnée.\ngaleri.html : galerie des images des discussions (si sélectionnée).\nekler/ : pièces jointes téléchargées avec succès.\nindirme-raporu.json : pièces jointes trouvées, erreurs et médias non résolus.\n\nCette extension utilise des formats de données internes non officiels de ChatGPT. Les nouveaux types de médias ou de pièces jointes peuvent ne pas être reconnus. Un rapport sans erreur ne garantit pas que toutes les pièces jointes ont été trouvées ; comparez-le avec la discussion. Les pièces jointes expirées ou supprimées ne peuvent pas être récupérées.\n",
+  readmeText: "conversation.json : tous les nœuds de la discussion et leurs métadonnées, tels que renvoyés par le serveur.\nconversation.md / .html / .txt / .docx : version lisible de la branche sélectionnée.\ngallery.html : galerie des images des discussions (si sélectionnée).\nattachments/ : pièces jointes téléchargées avec succès.\ndownload-report.json : pièces jointes trouvées, erreurs et médias non résolus.\n\nCette extension utilise des formats de données internes non officiels de ChatGPT. Les nouveaux types de médias ou de pièces jointes peuvent ne pas être reconnus. Un rapport sans erreur ne garantit pas que toutes les pièces jointes ont été trouvées ; comparez-le avec la discussion. Les pièces jointes expirées ou supprimées ne peuvent pas être récupérées.\n",
   renderUntitled: "Discussion sans titre",
   renderUser: "Vous",
   renderAssistant: "ChatGPT",

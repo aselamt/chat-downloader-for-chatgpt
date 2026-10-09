@@ -1,14 +1,14 @@
-// Bağımlılıksız Word (.docx) yazıcısı: render.js belge modelini ve markdown.js sözdizimi ağacını OOXML'e çevirir.
-// Paketleme zip.js ile yapılır. Desteklenenler: başlık, paragraf, kalın/italik/üstü çizili/kod, bağlantı,
-// liste (iç içe), tablo, kod bloğu, alıntı, yatay çizgi, dipnot işaretleri, formül (LaTeX metni) ve PNG/JPEG/GIF görseller.
+// Dependency-free Word (.docx) writer: turns the render.js document model and the markdown.js syntax tree into OOXML.
+// Packaged with zip.js. Supports headings, paragraphs, bold/italic/strikethrough/code, links,
+// (nested) lists, tables, code blocks, quotes, horizontal rules, footnote markers, math (as LaTeX text) and PNG/JPEG/GIF images.
 (() => {
   const ns = globalThis.__csi ||= {};
   const encoder = new TextEncoder();
   const NS_W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
   const NS_R = "http://schemas.openxmlformats.org/officeDocument/2006/relationships";
-  const MAX_WIDTH_EMU = 5486400; // 6 inç
+  const MAX_WIDTH_EMU = 5486400; // 6 inches
 
-  // XML 1.0'da geçersiz karakterler silinir.
+  // Characters that are invalid in XML 1.0 are removed.
   const xml = s => String(s).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\ufffe\uffff]/g, "")
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -27,8 +27,8 @@
     return null;
   }
 
-  // Bir belge (veya birden çok belge) için Word paketi üretir.
-  // items: [{ doc, images: Map(arşiv yolu → Uint8Array) }]
+  // Builds a Word package for one or more documents.
+  // items: [{ doc, images: Map(archive path → Uint8Array) }]
   async function build(items, { t }) {
     const rels = [];
     const media = [];

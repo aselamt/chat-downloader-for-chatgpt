@@ -1,5 +1,5 @@
-// _locales/*/messages.json dosyalarını üretir. Metinlerde {1}, {2} ... yer tutucu olarak kullanılır.
-// Çalıştır: node tools/locales.js
+// Generates _locales/*/messages.json. Strings use {1}, {2} ... as placeholders.
+// Run: node tools/locales.js
 const fs = require("fs");
 const path = require("path");
 
@@ -88,7 +88,7 @@ const tr = {
   panelCopyFailed: "Kopyalanamadı",
 
   bulkIndexTitle: "Tüm sohbetler",
-  readmeText: "conversation.json: Sunucunun döndürdüğü tüm sohbet düğümleri ve meta verileri.\nconversation.md / .html / .txt / .docx: Seçili dalın okunabilir hâli.\ngaleri.html: Sohbetlerdeki görsellerin galerisi (seçildiyse).\nekler/: Başarıyla indirilen ekler.\nindirme-raporu.json: Bulunan ekler, hatalar ve çözülemeyen medya işaretçileri.\n\nBu eklenti, ChatGPT'nin resmî olmayan dahili veri biçimlerini kullanır. Yeni medya/ek biçimleri tanınmayabilir. Raporun hatasız olması tüm eklerin bulunduğunu garanti etmez; sohbetle karşılaştırın. Süresi dolan veya silinen ekleri geri getiremez.\n",
+  readmeText: "conversation.json: Sunucunun döndürdüğü tüm sohbet düğümleri ve meta verileri.\nconversation.md / .html / .txt / .docx: Seçili dalın okunabilir hâli.\ngallery.html: Sohbetlerdeki görsellerin galerisi (seçildiyse).\nattachments/: Başarıyla indirilen ekler.\ndownload-report.json: Bulunan ekler, hatalar ve çözülemeyen medya işaretçileri.\n\nBu eklenti, ChatGPT'nin resmî olmayan dahili veri biçimlerini kullanır. Yeni medya/ek biçimleri tanınmayabilir. Raporun hatasız olması tüm eklerin bulunduğunu garanti etmez; sohbetle karşılaştırın. Süresi dolan veya silinen ekleri geri getiremez.\n",
 
   renderUntitled: "Adsız sohbet",
   renderUser: "Sen",
@@ -255,7 +255,7 @@ const en = {
   panelCopyFailed: "Could not copy",
 
   bulkIndexTitle: "All chats",
-  readmeText: "conversation.json: Every conversation node and its metadata as returned by the server.\nconversation.md / .html / .txt / .docx: A readable version of the selected branch.\ngaleri.html: A gallery of the images in the chats (if selected).\nekler/: Attachments that were downloaded successfully.\nindirme-raporu.json: Attachments found, errors and unresolved media pointers.\n\nThis extension relies on ChatGPT's unofficial internal data formats. New media/attachment types may not be recognized. A clean report does not guarantee every attachment was found; compare it with the chat. Expired or deleted attachments cannot be recovered.\n",
+  readmeText: "conversation.json: Every conversation node and its metadata as returned by the server.\nconversation.md / .html / .txt / .docx: A readable version of the selected branch.\ngallery.html: A gallery of the images in the chats (if selected).\nattachments/: Attachments that were downloaded successfully.\ndownload-report.json: Attachments found, errors and unresolved media pointers.\n\nThis extension relies on ChatGPT's unofficial internal data formats. New media/attachment types may not be recognized. A clean report does not guarantee every attachment was found; compare it with the chat. Expired or deleted attachments cannot be recovered.\n",
 
   renderUntitled: "Untitled chat",
   renderUser: "You",
@@ -349,7 +349,7 @@ function toChrome(messages) {
   return out;
 }
 
-// Ek diller tools/locales/<dil>.js dosyalarındadır (Chrome klasör adlarıyla: pt_BR, zh_CN …).
+// Other languages live in tools/locales/<lang>.js (named like Chrome's folders: pt_BR, zh_CN …).
 const extra = Object.fromEntries(fs.readdirSync(path.join(__dirname, "locales")).filter(f => f.endsWith(".js"))
   .map(f => [f.replace(/\.js$/, ""), require(path.join(__dirname, "locales", f))]));
 const all = { tr, en, ...extra };
@@ -359,12 +359,12 @@ function check() {
   const count = text => new Set([...String(text).matchAll(/\{(\d)\}/g)].map(m => m[1])).size;
   for (const [lang, messages] of Object.entries(all)) {
     for (const key of Object.keys(en)) {
-      if (!(key in messages)) problems.push(`${lang}: eksik ${key}`);
-      else if (count(messages[key]) !== count(en[key])) problems.push(`${lang}: ${key} yer tutucu sayısı farklı`);
+      if (!(key in messages)) problems.push(`${lang}: missing ${key}`);
+      else if (count(messages[key]) !== count(en[key])) problems.push(`${lang}: ${key} has a different placeholder count`);
     }
-    for (const key of Object.keys(messages)) if (!(key in en)) problems.push(`${lang}: fazladan ${key}`);
-    if ([...messages.extDescription].length > 132) problems.push(`${lang}: extDescription 132 karakteri aşıyor`);
-    if ([...messages.extName].length > 75) problems.push(`${lang}: extName 75 karakteri aşıyor`);
+    for (const key of Object.keys(messages)) if (!(key in en)) problems.push(`${lang}: extra key ${key}`);
+    if ([...messages.extDescription].length > 132) problems.push(`${lang}: extDescription exceeds 132 characters`);
+    if ([...messages.extName].length > 75) problems.push(`${lang}: extName exceeds 75 characters`);
   }
   return problems;
 }
@@ -377,6 +377,6 @@ if (require.main === module) {
     fs.mkdirSync(path.join(root, lang), { recursive: true });
     fs.writeFileSync(path.join(root, lang, "messages.json"), JSON.stringify(toChrome(messages), null, 2) + "\n");
   }
-  console.log(`${Object.keys(en).length} mesaj, ${Object.keys(all).length} dil yazıldı: ${Object.keys(all).join(", ")}`);
+  console.log(`Wrote ${Object.keys(en).length} messages in ${Object.keys(all).length} languages: ${Object.keys(all).join(", ")}`);
 }
 module.exports = { tr, en, all, check, toChrome };
