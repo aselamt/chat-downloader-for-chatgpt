@@ -1,0 +1,547 @@
+{
+  "extName": {
+    "message": "ChatGPT用チャットダウンローダー"
+  },
+  "extDescription": {
+    "message": "ChatGPTのチャットを添付ファイルごとPDF・Word・Markdown・HTML・JSONで保存。処理はすべてローカルで、データは端末外に出ません。"
+  },
+  "actionTitle": {
+    "message": "チャットダウンローダー"
+  },
+  "commandDescription": {
+    "message": "チャットダウンローダーのパネルを開く"
+  },
+  "tabChat": {
+    "message": "開いているチャット"
+  },
+  "tabSite": {
+    "message": "chatgpt.com — 保存済みのチャットが開かれていません"
+  },
+  "tabOther": {
+    "message": "chatgpt.com のタブではありません"
+  },
+  "pickLoading": {
+    "message": "チャットを読み込み中…"
+  },
+  "pickReload": {
+    "message": "一覧を再読み込み"
+  },
+  "pickCurrent": {
+    "message": "表示中"
+  },
+  "errListFailed": {
+    "message": "チャット一覧を読み込めませんでした。"
+  },
+  "errNoSelection": {
+    "message": "ダウンロードするチャットを1つ以上選んでください。"
+  },
+  "scopeLabel": {
+    "message": "ダウンロード対象を選択"
+  },
+  "scopeCurrent": {
+    "message": "開いているチャット"
+  },
+  "scopeAll": {
+    "message": "すべて"
+  },
+  "scopeChoose": {
+    "message": "選択"
+  },
+  "pickTitle": {
+    "message": "ダウンロードするチャット"
+  },
+  "pickSearch": {
+    "message": "チャットを検索"
+  },
+  "pickAll": {
+    "message": "すべて選択"
+  },
+  "pickNone": {
+    "message": "選択を解除"
+  },
+  "pickCount": {
+    "message": "$P2$件中$P1$件を選択",
+    "placeholders": {
+      "p2": {
+        "content": "$2"
+      },
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "pickStart": {
+    "message": "$P1$件のチャットをダウンロード",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "pickEmpty": {
+    "message": "一致するチャットはありません。"
+  },
+  "htmlRecent": {
+    "message": "最近"
+  },
+  "htmlSearch": {
+    "message": "チャットを検索"
+  },
+  "htmlPickChat": {
+    "message": "左からチャットを選んでください"
+  },
+  "htmlChatsWord": {
+    "message": "件のチャット"
+  },
+  "htmlMenu": {
+    "message": "メニューを開く"
+  },
+  "htmlCloseMenu": {
+    "message": "メニューを閉じる"
+  },
+  "htmlNoMatch": {
+    "message": "一致するチャットはありません。"
+  },
+  "renderCopy": {
+    "message": "コピー"
+  },
+  "renderCopied": {
+    "message": "コピーしました"
+  },
+  "formatsLegend": {
+    "message": "形式"
+  },
+  "attachmentsTitle": {
+    "message": "添付ファイルもダウンロード"
+  },
+  "attachmentsHint": {
+    "message": "アップロードしたファイル、画像、ChatGPTが作成したファイルをZIPに含めます。"
+  },
+  "textModeLink": {
+    "message": "TXT/MD添付はファイル名とリンクのみ"
+  },
+  "textModeLinkHint": {
+    "message": "チャット本文が短くなります。"
+  },
+  "textModeFull": {
+    "message": "TXT/MD添付の内容をすべて含める"
+  },
+  "textModeFullHint": {
+    "message": "該当するメッセージの下に本文を表示します。"
+  },
+  "stepsTitle": {
+    "message": "ツールと推論のステップ"
+  },
+  "stepsHint": {
+    "message": "コード実行、ウェブ検索、推論の要約を含めます。"
+  },
+  "bulkNote": {
+    "message": "すべてのチャットは添付ファイルなしで書き出されます(ギャラリーをオンにすると画像のみ)。チャット数によっては数分かかります。"
+  },
+  "downloadButton": {
+    "message": "ダウンロード"
+  },
+  "footerLocal": {
+    "message": "すべてブラウザー内で処理され、第三者にデータは送信されません。"
+  },
+  "footerDisclaimer": {
+    "message": "OpenAIとは提携していません。ChatGPTはOpenAIの商標です。"
+  },
+  "errOpenChat": {
+    "message": "まず chatgpt.com でダウンロードしたい保存済みチャットを開いてください。"
+  },
+  "errWrongSite": {
+    "message": "このオプションを使うには chatgpt.com のタブを開いてください。"
+  },
+  "errNoFormat": {
+    "message": "形式を1つ以上選んでください。"
+  },
+  "errNoChat": {
+    "message": "保存済みのチャットを開いてください(アドレスに /c/ が必要です)。"
+  },
+  "errInternal": {
+    "message": "拡張機能のファイルを読み込めませんでした。ページを再読み込みしてもう一度お試しください。"
+  },
+  "errRunning": {
+    "message": "このタブではすでにダウンロードが進行中です。"
+  },
+  "errSession": {
+    "message": "セッションを取得できませんでした"
+  },
+  "errNoToken": {
+    "message": "セッションが見つかりません。ChatGPTにログインしてページを再読み込みしてください。"
+  },
+  "errNoConversations": {
+    "message": "ダウンロードするチャットがありません。"
+  },
+  "errNoDownloadUrl": {
+    "message": "ダウンロードURLがありません。サービス側が変わった可能性があります。"
+  },
+  "errHtmlInstead": {
+    "message": "ファイルの代わりにHTMLが返されました。"
+  },
+  "errFormatChanged": {
+    "message": "データ形式が変わったため、完全なアーカイブを作成できません。"
+  },
+  "errCouldNotStart": {
+    "message": "ダウンロードを開始できませんでした。"
+  },
+  "statusStarting": {
+    "message": "開始しています…"
+  },
+  "statusStarted": {
+    "message": "開始しました。進行状況はここと、ページの右下に表示されます。"
+  },
+  "statusPreparing": {
+    "message": "準備中…"
+  },
+  "statusFetching": {
+    "message": "チャットを取得中…"
+  },
+  "statusAttachment": {
+    "message": "添付ファイル $P1$/$P2$: $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusListing": {
+    "message": "チャット一覧を取得中… ($P1$)",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "statusBulk": {
+    "message": "チャット $P1$/$P2$: $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusZipping": {
+    "message": "ZIPを作成中…"
+  },
+  "statusDone": {
+    "message": "完了しました。添付: 成功 $P1$ 件、失敗 $P2$ 件。解決できないメディア: $P3$ 件。レポートとチャットを照らし合わせてください。ダウンロードが始まらない場合は、ページの「ファイルをダウンロード」をクリックしてください。",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusDoneFile": {
+    "message": "完了しました。ダウンロードが始まらない場合は、ページの「ファイルをダウンロード」をクリックしてください。"
+  },
+  "statusDoneBulk": {
+    "message": "完了しました。$P1$ 件を書き出し、$P2$ 件をスキップしました(詳細はレポート参照)。ダウンロードが始まらない場合は、ページの「ファイルをダウンロード」をクリックしてください。",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusCancelled": {
+    "message": "キャンセルしました。"
+  },
+  "statusFailed": {
+    "message": "書き出しに失敗しました"
+  },
+  "panelTitle": {
+    "message": "チャットダウンローダー"
+  },
+  "panelClose": {
+    "message": "状態ウィンドウを閉じる"
+  },
+  "panelCancel": {
+    "message": "キャンセル"
+  },
+  "panelDownload": {
+    "message": "ファイルをダウンロード"
+  },
+  "panelCopy": {
+    "message": "Markdownをコピー"
+  },
+  "panelCopied": {
+    "message": "コピーしました ✓"
+  },
+  "panelCopyFailed": {
+    "message": "コピーできませんでした"
+  },
+  "bulkIndexTitle": {
+    "message": "すべてのチャット"
+  },
+  "readmeText": {
+    "message": "conversation.json: サーバーが返したチャットの全ノードとメタデータ。\nconversation.md / .html / .txt / .docx: 選択中のブランチの読みやすい版。\ngaleri.html: チャット内の画像のギャラリー(選択した場合)。\nekler/: 正常にダウンロードできた添付ファイル。\nindirme-raporu.json: 見つかった添付ファイル、エラー、解決できないメディア。\n\nこの拡張機能はChatGPTの非公式な内部データ形式を使用しています。新しいメディアや添付の種類は認識されない場合があります。レポートにエラーがなくても、すべての添付ファイルが見つかったとは限りません。チャットと照らし合わせてください。期限切れまたは削除された添付ファイルは復元できません。\n"
+  },
+  "renderUntitled": {
+    "message": "無題のチャット"
+  },
+  "renderUser": {
+    "message": "あなた"
+  },
+  "renderAssistant": {
+    "message": "ChatGPT"
+  },
+  "renderStep": {
+    "message": "ステップ"
+  },
+  "renderThinking": {
+    "message": "推論"
+  },
+  "renderCreated": {
+    "message": "作成"
+  },
+  "renderUpdated": {
+    "message": "更新"
+  },
+  "renderExported": {
+    "message": "書き出し"
+  },
+  "renderImage": {
+    "message": "画像"
+  },
+  "renderSources": {
+    "message": "出典"
+  },
+  "renderAttachments": {
+    "message": "添付ファイル"
+  },
+  "renderAttachmentContent": {
+    "message": "添付ファイルの内容"
+  },
+  "renderLeftover": {
+    "message": "ほかのブランチの添付ファイル"
+  },
+  "renderFailed": {
+    "message": "ダウンロード失敗"
+  },
+  "renderSkipped": {
+    "message": "未ダウンロード"
+  },
+  "renderTextDecodeError": {
+    "message": "テキストをUTF-8またはBOM付きUTF-16として読み取れませんでした。元の添付ファイルはZIPに含まれています。"
+  },
+  "tabShare": {
+    "message": "共有リンク"
+  },
+  "msgOnlyTitle": {
+    "message": "選んだメッセージのみ"
+  },
+  "msgOnlyHint": {
+    "message": "メッセージを1件ずつチェック。Shiftクリックで範囲選択。"
+  },
+  "msgAll": {
+    "message": "すべて"
+  },
+  "msgAnswers": {
+    "message": "回答のみ"
+  },
+  "msgPrompts": {
+    "message": "自分の質問のみ"
+  },
+  "msgLoading": {
+    "message": "メッセージを読み込み中…"
+  },
+  "msgEmpty": {
+    "message": "表示するメッセージはありません。"
+  },
+  "filterLabel": {
+    "message": "フィルター"
+  },
+  "filterAll": {
+    "message": "すべてのチャット"
+  },
+  "filterNoProject": {
+    "message": "プロジェクトなし"
+  },
+  "filterArchived": {
+    "message": "アーカイブ済み"
+  },
+  "filterArchivedShort": {
+    "message": "アーカイブ"
+  },
+  "filterGpt": {
+    "message": "GPTのチャット"
+  },
+  "filterProject": {
+    "message": "プロジェクト"
+  },
+  "filterFrom": {
+    "message": "開始日"
+  },
+  "filterTo": {
+    "message": "終了日"
+  },
+  "pdfNote": {
+    "message": "PDFは印刷ダイアログ付きの新しいタブで開きます。送信先で「PDFに保存」を選んでください。サーバー不要、回数制限なし。"
+  },
+  "galleryOption": {
+    "message": "画像ギャラリー"
+  },
+  "galleryOptionHint": {
+    "message": "チャット内のすべての画像(生成画像を含む)を1ページにまとめます。"
+  },
+  "obsidianOption": {
+    "message": "Obsidian対応Markdown"
+  },
+  "obsidianOptionHint": {
+    "message": "YAMLフロントマター(タイトル、日付、モデル、リンク)を追加し、ノート名をチャットのタイトルにします。"
+  },
+  "incrementalOption": {
+    "message": "変更されたチャットのみ"
+  },
+  "incrementalHint": {
+    "message": "前回のバックアップ以降に更新されていないチャットはスキップします。"
+  },
+  "incrementalInfo": {
+    "message": "前回のバックアップには $P1$ 件のチャットがあります。未変更のものはスキップします。",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "saveLegend": {
+    "message": "保存先"
+  },
+  "saveZip": {
+    "message": "ダウンロード(ZIP)"
+  },
+  "saveFolder": {
+    "message": "フォルダー"
+  },
+  "folderPick": {
+    "message": "フォルダーを選択"
+  },
+  "folderNone": {
+    "message": "フォルダー未選択"
+  },
+  "folderNote": {
+    "message": "選んだフォルダー(Obsidianの保管庫など)にファイルを書き込み、既存のアーカイブと索引を更新します。サイドパネルは開いたままにしてください。"
+  },
+  "advancedTitle": {
+    "message": "詳細設定"
+  },
+  "pageButtonOption": {
+    "message": "ChatGPTページの「ダウンロード」ボタン"
+  },
+  "pageButtonOptionHint": {
+    "message": "チャット見出しの共有ボタンの隣に表示し、前回の設定でダウンロードします。"
+  },
+  "resetBackup": {
+    "message": "バックアップ履歴をリセット"
+  },
+  "resetBackupDone": {
+    "message": "履歴をリセットしました。次回のバックアップにはすべてのチャットが含まれます。"
+  },
+  "pageButtonLabel": {
+    "message": "ダウンロード"
+  },
+  "pageButtonTitle": {
+    "message": "このチャットをダウンロード(チャットダウンローダー)"
+  },
+  "menuExportLink": {
+    "message": "このチャットをダウンロード"
+  },
+  "menuExportPage": {
+    "message": "開いているチャットをダウンロード"
+  },
+  "menuOpenPanel": {
+    "message": "チャットダウンローダーのパネルを開く"
+  },
+  "printTitle": {
+    "message": "PDF"
+  },
+  "printHint": {
+    "message": "印刷ダイアログで送信先に「PDFに保存」を選んでください。"
+  },
+  "printButton": {
+    "message": "印刷 / PDFに保存"
+  },
+  "printExpired": {
+    "message": "この印刷ページは期限切れです。サイドパネルからもう一度PDFを作成してください。"
+  },
+  "galleryTitle": {
+    "message": "画像ギャラリー"
+  },
+  "galleryImagesWord": {
+    "message": "枚の画像"
+  },
+  "galleryEmpty": {
+    "message": "この書き出しには画像がありません。"
+  },
+  "renderCanvasUpdated": {
+    "message": "更新"
+  },
+  "statusWord": {
+    "message": "Word文書を作成中…"
+  },
+  "statusPdf": {
+    "message": "PDFページを準備中…"
+  },
+  "statusFolder": {
+    "message": "フォルダーに書き込み中 $P1$/$P2$…",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusDonePdf": {
+    "message": "完了しました。PDFが新しいタブで開きました。印刷ダイアログで「PDFに保存」を選んでください。"
+  },
+  "statusSkippedUnchanged": {
+    "message": "未変更のチャット $P1$ 件をスキップしました。",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "errNoFolder": {
+    "message": "先に保存先フォルダーを選んでください。"
+  },
+  "errFolderPermission": {
+    "message": "フォルダーへの書き込みが許可されませんでした。"
+  },
+  "errFolder": {
+    "message": "フォルダーに書き込めませんでした。"
+  },
+  "errFolderPanel": {
+    "message": "サイドパネルが閉じられたため、フォルダーに書き込めませんでした。パネルを開いたままもう一度お試しください。"
+  },
+  "errPrint": {
+    "message": "PDFページを開けませんでした。"
+  },
+  "errNoMessages": {
+    "message": "メッセージを1つ以上選んでください。"
+  }
+}

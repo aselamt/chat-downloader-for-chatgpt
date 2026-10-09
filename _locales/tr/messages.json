@@ -1,0 +1,547 @@
+{
+  "extName": {
+    "message": "ChatGPT için Sohbet İndir"
+  },
+  "extDescription": {
+    "message": "ChatGPT sohbetlerini PDF, Word, Markdown, HTML veya JSON olarak ekleriyle kaydet. Yerel çalışır; veri cihazından çıkmaz."
+  },
+  "actionTitle": {
+    "message": "Sohbet İndir"
+  },
+  "commandDescription": {
+    "message": "Sohbet İndir panelini aç"
+  },
+  "tabChat": {
+    "message": "Açık sohbet"
+  },
+  "tabSite": {
+    "message": "chatgpt.com — kayıtlı bir sohbet açık değil"
+  },
+  "tabOther": {
+    "message": "chatgpt.com sekmesinde değilsin"
+  },
+  "pickLoading": {
+    "message": "Sohbetler yükleniyor…"
+  },
+  "pickReload": {
+    "message": "Listeyi yenile"
+  },
+  "pickCurrent": {
+    "message": "Açık"
+  },
+  "errListFailed": {
+    "message": "Sohbet listesi alınamadı."
+  },
+  "errNoSelection": {
+    "message": "İndirmek için en az bir sohbet seç."
+  },
+  "scopeLabel": {
+    "message": "Neyi indireceğini seç"
+  },
+  "scopeCurrent": {
+    "message": "Açık sohbet"
+  },
+  "scopeAll": {
+    "message": "Tüm sohbetler"
+  },
+  "scopeChoose": {
+    "message": "Sohbet seç"
+  },
+  "pickTitle": {
+    "message": "İndirilecek sohbetler"
+  },
+  "pickSearch": {
+    "message": "Sohbetlerde ara"
+  },
+  "pickAll": {
+    "message": "Tümünü seç"
+  },
+  "pickNone": {
+    "message": "Seçimi temizle"
+  },
+  "pickCount": {
+    "message": "$P1$ / $P2$ seçili",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "pickStart": {
+    "message": "$P1$ sohbeti indir",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "pickEmpty": {
+    "message": "Eşleşen sohbet yok."
+  },
+  "htmlRecent": {
+    "message": "Yakın zamandakiler"
+  },
+  "htmlSearch": {
+    "message": "Sohbetlerde ara"
+  },
+  "htmlPickChat": {
+    "message": "Soldan bir sohbet seç"
+  },
+  "htmlChatsWord": {
+    "message": "sohbet"
+  },
+  "htmlMenu": {
+    "message": "Menüyü aç"
+  },
+  "htmlCloseMenu": {
+    "message": "Menüyü kapat"
+  },
+  "htmlNoMatch": {
+    "message": "Eşleşen sohbet yok."
+  },
+  "renderCopy": {
+    "message": "Kopyala"
+  },
+  "renderCopied": {
+    "message": "Kopyalandı"
+  },
+  "formatsLegend": {
+    "message": "Biçimler"
+  },
+  "attachmentsTitle": {
+    "message": "Ekleri de indir"
+  },
+  "attachmentsHint": {
+    "message": "Yüklenen dosyalar, görseller ve ChatGPT'nin ürettiği dosyalar ZIP'e eklenir."
+  },
+  "textModeLink": {
+    "message": "TXT/MD eklerinde ad ve bağlantı"
+  },
+  "textModeLinkHint": {
+    "message": "Konuşma metni daha kısa kalır."
+  },
+  "textModeFull": {
+    "message": "TXT/MD ek içeriğinin tamamı"
+  },
+  "textModeFullHint": {
+    "message": "Metin, ilgili mesajın altında gösterilir."
+  },
+  "stepsTitle": {
+    "message": "Araç ve akıl yürütme adımları"
+  },
+  "stepsHint": {
+    "message": "Kod çalıştırma, web araması ve düşünme özetleri dahil edilir."
+  },
+  "bulkNote": {
+    "message": "Tüm sohbetler eksiz indirilir (galeri açıksa yalnızca görseller). Sohbet sayısına göre birkaç dakika sürebilir."
+  },
+  "downloadButton": {
+    "message": "İndir"
+  },
+  "footerLocal": {
+    "message": "Her şey tarayıcında çalışır; veri üçüncü bir tarafa gönderilmez."
+  },
+  "footerDisclaimer": {
+    "message": "OpenAI ile bağlantılı değildir. ChatGPT, OpenAI'nin ticari markasıdır."
+  },
+  "errOpenChat": {
+    "message": "Önce chatgpt.com'da indirmek istediğin kayıtlı konuşmayı aç."
+  },
+  "errWrongSite": {
+    "message": "Bu özellik için chatgpt.com sekmesinde olmalısın."
+  },
+  "errNoFormat": {
+    "message": "En az bir biçim seç."
+  },
+  "errNoChat": {
+    "message": "Kaydedilmiş bir sohbet aç; adresinde /c/ bulunmalı."
+  },
+  "errInternal": {
+    "message": "Eklenti dosyaları yüklenemedi; sayfayı yenileyip tekrar dene."
+  },
+  "errRunning": {
+    "message": "Bu sekmede bir indirme zaten devam ediyor."
+  },
+  "errSession": {
+    "message": "Oturum alınamadı"
+  },
+  "errNoToken": {
+    "message": "Oturum bulunamadı; ChatGPT'ye giriş yapıp sayfayı yenile."
+  },
+  "errNoConversations": {
+    "message": "İndirilecek sohbet bulunamadı."
+  },
+  "errNoDownloadUrl": {
+    "message": "İndirme adresi yok; uç nokta değişmiş olabilir."
+  },
+  "errHtmlInstead": {
+    "message": "Dosya yerine HTML yanıtı alındı."
+  },
+  "errFormatChanged": {
+    "message": "Sohbet veri biçimi değişmiş; tam arşiv oluşturulamıyor."
+  },
+  "errCouldNotStart": {
+    "message": "İndirme başlatılamadı."
+  },
+  "statusStarting": {
+    "message": "Başlatılıyor…"
+  },
+  "statusStarted": {
+    "message": "Başladı. İlerleme burada ve sayfanın sağ altında gösteriliyor."
+  },
+  "statusPreparing": {
+    "message": "Hazırlanıyor…"
+  },
+  "statusFetching": {
+    "message": "Sohbet alınıyor…"
+  },
+  "statusAttachment": {
+    "message": "Ek $P1$/$P2$: $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusListing": {
+    "message": "Sohbet listesi alınıyor… ($P1$)",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "statusBulk": {
+    "message": "Sohbet $P1$/$P2$: $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusZipping": {
+    "message": "ZIP hazırlanıyor…"
+  },
+  "statusDone": {
+    "message": "Hazır. Ekler: $P1$ başarılı, $P2$ başarısız. Çözülemeyen medya: $P3$. Raporu ve sohbeti karşılaştır. İndirme başlamazsa sayfadaki “Dosyayı indir” bağlantısına tıkla.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusDoneFile": {
+    "message": "Hazır. İndirme başlamazsa sayfadaki “Dosyayı indir” bağlantısına tıkla."
+  },
+  "statusDoneBulk": {
+    "message": "Hazır. $P1$ sohbet aktarıldı, $P2$ sohbet atlandı (ayrıntı için rapora bak). İndirme başlamazsa sayfadaki “Dosyayı indir” bağlantısına tıkla.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusCancelled": {
+    "message": "İptal edildi."
+  },
+  "statusFailed": {
+    "message": "Dışa aktarılamadı"
+  },
+  "panelTitle": {
+    "message": "Sohbet İndir"
+  },
+  "panelClose": {
+    "message": "Durum penceresini kapat"
+  },
+  "panelCancel": {
+    "message": "İptal"
+  },
+  "panelDownload": {
+    "message": "Dosyayı indir"
+  },
+  "panelCopy": {
+    "message": "Markdown'ı kopyala"
+  },
+  "panelCopied": {
+    "message": "Kopyalandı ✓"
+  },
+  "panelCopyFailed": {
+    "message": "Kopyalanamadı"
+  },
+  "bulkIndexTitle": {
+    "message": "Tüm sohbetler"
+  },
+  "readmeText": {
+    "message": "conversation.json: Sunucunun döndürdüğü tüm sohbet düğümleri ve meta verileri.\nconversation.md / .html / .txt / .docx: Seçili dalın okunabilir hâli.\ngaleri.html: Sohbetlerdeki görsellerin galerisi (seçildiyse).\nekler/: Başarıyla indirilen ekler.\nindirme-raporu.json: Bulunan ekler, hatalar ve çözülemeyen medya işaretçileri.\n\nBu eklenti, ChatGPT'nin resmî olmayan dahili veri biçimlerini kullanır. Yeni medya/ek biçimleri tanınmayabilir. Raporun hatasız olması tüm eklerin bulunduğunu garanti etmez; sohbetle karşılaştırın. Süresi dolan veya silinen ekleri geri getiremez.\n"
+  },
+  "renderUntitled": {
+    "message": "Adsız sohbet"
+  },
+  "renderUser": {
+    "message": "Sen"
+  },
+  "renderAssistant": {
+    "message": "ChatGPT"
+  },
+  "renderStep": {
+    "message": "Adım"
+  },
+  "renderThinking": {
+    "message": "Akıl yürütme"
+  },
+  "renderCreated": {
+    "message": "Oluşturulma"
+  },
+  "renderUpdated": {
+    "message": "Güncellenme"
+  },
+  "renderExported": {
+    "message": "Dışa aktarma"
+  },
+  "renderImage": {
+    "message": "görsel"
+  },
+  "renderSources": {
+    "message": "Kaynaklar"
+  },
+  "renderAttachments": {
+    "message": "Ekler"
+  },
+  "renderAttachmentContent": {
+    "message": "Ek içeriği"
+  },
+  "renderLeftover": {
+    "message": "Diğer sohbet düğümlerindeki ekler"
+  },
+  "renderFailed": {
+    "message": "indirilemedi"
+  },
+  "renderSkipped": {
+    "message": "indirilmedi"
+  },
+  "renderTextDecodeError": {
+    "message": "Metin UTF-8 veya BOM içeren UTF-16 olarak okunamadı; orijinal ek ZIP içinde mevcut."
+  },
+  "tabShare": {
+    "message": "Paylaşım bağlantısı"
+  },
+  "msgOnlyTitle": {
+    "message": "Yalnızca seçtiğim mesajlar"
+  },
+  "msgOnlyHint": {
+    "message": "Mesajları tek tek işaretle; Shift ile aralık seç."
+  },
+  "msgAll": {
+    "message": "Tümü"
+  },
+  "msgAnswers": {
+    "message": "Yalnızca cevaplar"
+  },
+  "msgPrompts": {
+    "message": "Yalnızca sorularım"
+  },
+  "msgLoading": {
+    "message": "Mesajlar yükleniyor…"
+  },
+  "msgEmpty": {
+    "message": "Gösterilecek mesaj yok."
+  },
+  "filterLabel": {
+    "message": "Filtre"
+  },
+  "filterAll": {
+    "message": "Tüm sohbetler"
+  },
+  "filterNoProject": {
+    "message": "Projesiz"
+  },
+  "filterArchived": {
+    "message": "Arşivlenmiş"
+  },
+  "filterArchivedShort": {
+    "message": "Arşiv"
+  },
+  "filterGpt": {
+    "message": "GPT sohbetleri"
+  },
+  "filterProject": {
+    "message": "Proje"
+  },
+  "filterFrom": {
+    "message": "Başlangıç tarihi"
+  },
+  "filterTo": {
+    "message": "Bitiş tarihi"
+  },
+  "pdfNote": {
+    "message": "PDF yeni sekmede yazdırma penceresiyle açılır; hedef olarak “PDF olarak kaydet”i seç. Sunucu ve sınır yok."
+  },
+  "galleryOption": {
+    "message": "Görsel galerisi"
+  },
+  "galleryOptionHint": {
+    "message": "Sohbetlerdeki tüm görselleri (üretilenler dahil) tek sayfada toplar."
+  },
+  "obsidianOption": {
+    "message": "Obsidian uyumlu Markdown"
+  },
+  "obsidianOptionHint": {
+    "message": "YAML frontmatter (başlık, tarih, model, bağlantı) ekler; not adı sohbet başlığı olur."
+  },
+  "incrementalOption": {
+    "message": "Yalnızca değişen sohbetler"
+  },
+  "incrementalHint": {
+    "message": "Son yedekten beri güncellenmeyen sohbetler atlanır."
+  },
+  "incrementalInfo": {
+    "message": "Son yedekte $P1$ sohbet var; güncellenmeyenler atlanır.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "saveLegend": {
+    "message": "Kaydetme yeri"
+  },
+  "saveZip": {
+    "message": "İndirilenler (ZIP)"
+  },
+  "saveFolder": {
+    "message": "Klasöre kaydet"
+  },
+  "folderPick": {
+    "message": "Klasör seç"
+  },
+  "folderNone": {
+    "message": "Klasör seçilmedi"
+  },
+  "folderNote": {
+    "message": "Dosyalar seçtiğin klasöre (ör. Obsidian kasası) yazılır; mevcut arşiv ve dizin güncellenir. Yan panel açık kalmalı."
+  },
+  "advancedTitle": {
+    "message": "Gelişmiş"
+  },
+  "pageButtonOption": {
+    "message": "ChatGPT sayfasında “İndir” düğmesi"
+  },
+  "pageButtonOptionHint": {
+    "message": "Sohbet başlığındaki Paylaş düğmesinin yanında; son ayarlarla indirir."
+  },
+  "resetBackup": {
+    "message": "Yedek geçmişini sıfırla"
+  },
+  "resetBackupDone": {
+    "message": "Yedek geçmişi sıfırlandı; sonraki yedek tüm sohbetleri içerir."
+  },
+  "pageButtonLabel": {
+    "message": "İndir"
+  },
+  "pageButtonTitle": {
+    "message": "Bu sohbeti indir (Sohbet İndir)"
+  },
+  "menuExportLink": {
+    "message": "Bu sohbeti indir"
+  },
+  "menuExportPage": {
+    "message": "Açık sohbeti indir"
+  },
+  "menuOpenPanel": {
+    "message": "Sohbet İndir panelini aç"
+  },
+  "printTitle": {
+    "message": "PDF"
+  },
+  "printHint": {
+    "message": "Yazdırma penceresinde hedef olarak “PDF olarak kaydet”i seç."
+  },
+  "printButton": {
+    "message": "Yazdır / PDF olarak kaydet"
+  },
+  "printExpired": {
+    "message": "Bu yazdırma sayfasının süresi dolmuş; yan panelden yeniden PDF oluştur."
+  },
+  "galleryTitle": {
+    "message": "Görsel galerisi"
+  },
+  "galleryImagesWord": {
+    "message": "görsel"
+  },
+  "galleryEmpty": {
+    "message": "Bu dışa aktarımda görsel bulunamadı."
+  },
+  "renderCanvasUpdated": {
+    "message": "güncellendi"
+  },
+  "statusWord": {
+    "message": "Word belgesi hazırlanıyor…"
+  },
+  "statusPdf": {
+    "message": "PDF sayfası hazırlanıyor…"
+  },
+  "statusFolder": {
+    "message": "Klasöre yazılıyor $P1$/$P2$…",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusDonePdf": {
+    "message": "Hazır. PDF yeni sekmede açıldı; yazdırma penceresinde “PDF olarak kaydet”i seç."
+  },
+  "statusSkippedUnchanged": {
+    "message": "$P1$ değişmemiş sohbet atlandı.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "errNoFolder": {
+    "message": "Önce kaydedilecek klasörü seç."
+  },
+  "errFolderPermission": {
+    "message": "Klasöre yazma izni verilmedi."
+  },
+  "errFolder": {
+    "message": "Klasöre yazılamadı."
+  },
+  "errFolderPanel": {
+    "message": "Yan panel kapandığı için klasöre yazılamadı; yan paneli açık tutup yeniden dene."
+  },
+  "errPrint": {
+    "message": "PDF sayfası açılamadı."
+  },
+  "errNoMessages": {
+    "message": "En az bir mesaj seç."
+  }
+}

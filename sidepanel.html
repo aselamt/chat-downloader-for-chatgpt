@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sohbet İndir</title>
+  <link rel="stylesheet" href="sidepanel.css">
+  <script src="src/markdown.js" defer></script>
+  <script src="src/render.js" defer></script>
+  <script src="sidepanel.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="head">
+      <img src="icons/icon32.png" alt="" width="28" height="28">
+      <div class="head-text">
+        <h1 data-i18n="panelTitle"></h1>
+        <p id="tab-info" class="tab-info"></p>
+      </div>
+    </header>
+
+    <main class="body">
+      <form id="export-form">
+        <div class="scope" role="radiogroup" aria-labelledby="scope-label">
+          <span id="scope-label" class="visually-hidden" data-i18n="scopeLabel"></span>
+          <label><input type="radio" name="scope" value="current" checked><span data-i18n="scopeCurrent"></span></label>
+          <label><input type="radio" name="scope" value="all"><span data-i18n="scopeAll"></span></label>
+          <label><input type="radio" name="scope" value="choose"><span data-i18n="scopeChoose"></span></label>
+        </div>
+
+        <!-- Açık sohbet: mesaj bazında seçim -->
+        <section id="messages" class="section" hidden>
+          <label class="toggle">
+            <input type="checkbox" name="messagesOnly" id="messages-only">
+            <span><strong data-i18n="msgOnlyTitle"></strong><small data-i18n="msgOnlyHint"></small></span>
+          </label>
+          <div id="msg-picker" class="picker" hidden>
+            <div class="bar">
+              <button id="msg-all" type="button" class="link" data-i18n="msgAll"></button>
+              <button id="msg-answers" type="button" class="link" data-i18n="msgAnswers"></button>
+              <button id="msg-prompts" type="button" class="link" data-i18n="msgPrompts"></button>
+              <button id="msg-none" type="button" class="link" data-i18n="pickNone"></button>
+              <span id="msg-count" class="count"></span>
+            </div>
+            <div id="msg-list" class="list" role="group" data-i18n-aria-label="msgOnlyTitle"></div>
+          </div>
+        </section>
+
+        <!-- Sohbet seç: liste, filtreler -->
+        <section id="picker" class="picker section" hidden>
+          <div class="search-row">
+            <input id="pick-search" type="search" data-i18n-placeholder="pickSearch">
+            <button id="pick-reload" type="button" class="icon" data-i18n-title="pickReload">↻</button>
+          </div>
+          <div class="filters">
+            <select id="pick-filter" data-i18n-aria-label="filterLabel">
+              <option value="all" data-i18n="filterAll"></option>
+              <option value="none" data-i18n="filterNoProject"></option>
+              <option value="archived" data-i18n="filterArchived"></option>
+              <option value="gpt" data-i18n="filterGpt"></option>
+            </select>
+            <input id="pick-from" type="date" data-i18n-aria-label="filterFrom" data-i18n-title="filterFrom">
+            <input id="pick-to" type="date" data-i18n-aria-label="filterTo" data-i18n-title="filterTo">
+          </div>
+          <div class="bar">
+            <button id="pick-all" type="button" class="link" data-i18n="pickAll"></button>
+            <button id="pick-none" type="button" class="link" data-i18n="pickNone"></button>
+            <span id="pick-count" class="count"></span>
+          </div>
+          <div id="pick-list" class="list" role="group" data-i18n-aria-label="pickTitle"></div>
+        </section>
+
+        <fieldset>
+          <legend data-i18n="formatsLegend"></legend>
+          <div class="formats">
+            <label class="chip"><input type="checkbox" name="formats" value="md" checked><span>Markdown</span></label>
+            <label class="chip"><input type="checkbox" name="formats" value="html" checked><span>HTML</span></label>
+            <label class="chip"><input type="checkbox" name="formats" value="pdf"><span>PDF</span></label>
+            <label class="chip"><input type="checkbox" name="formats" value="docx"><span>Word</span></label>
+            <label class="chip"><input type="checkbox" name="formats" value="txt"><span>TXT</span></label>
+            <label class="chip"><input type="checkbox" name="formats" value="json"><span>JSON</span></label>
+          </div>
+          <p id="pdf-note" class="note" data-i18n="pdfNote" hidden></p>
+        </fieldset>
+
+        <fieldset id="attachment-fieldset">
+          <label class="toggle">
+            <input type="checkbox" name="attachments" checked>
+            <span><strong data-i18n="attachmentsTitle"></strong><small data-i18n="attachmentsHint"></small></span>
+          </label>
+          <div id="text-mode" class="sub">
+            <label class="option">
+              <input type="radio" name="textMode" value="1" checked>
+              <span><strong data-i18n="textModeLink"></strong><small data-i18n="textModeLinkHint"></small></span>
+            </label>
+            <label class="option">
+              <input type="radio" name="textMode" value="2">
+              <span><strong data-i18n="textModeFull"></strong><small data-i18n="textModeFullHint"></small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="stack">
+          <label class="toggle">
+            <input type="checkbox" name="gallery">
+            <span><strong data-i18n="galleryOption"></strong><small data-i18n="galleryOptionHint"></small></span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" name="obsidian">
+            <span><strong data-i18n="obsidianOption"></strong><small data-i18n="obsidianOptionHint"></small></span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" name="steps">
+            <span><strong data-i18n="stepsTitle"></strong><small data-i18n="stepsHint"></small></span>
+          </label>
+          <label id="incremental-row" class="toggle" hidden>
+            <input type="checkbox" name="incremental">
+            <span><strong data-i18n="incrementalOption"></strong><small id="incremental-info"></small></span>
+          </label>
+        </div>
+
+        <fieldset class="save">
+          <legend data-i18n="saveLegend"></legend>
+          <div class="scope two" role="radiogroup">
+            <label><input type="radio" name="saveMode" value="zip" checked><span data-i18n="saveZip"></span></label>
+            <label><input type="radio" name="saveMode" value="folder"><span data-i18n="saveFolder"></span></label>
+          </div>
+          <div id="folder-row" class="folder-row" hidden>
+            <span id="folder-name" class="folder-name"></span>
+            <button id="folder-pick" type="button" class="small" data-i18n="folderPick"></button>
+          </div>
+          <p id="folder-note" class="note" data-i18n="folderNote" hidden></p>
+        </fieldset>
+
+        <details class="advanced">
+          <summary data-i18n="advancedTitle"></summary>
+          <label class="toggle">
+            <input type="checkbox" id="page-button" checked>
+            <span><strong data-i18n="pageButtonOption"></strong><small data-i18n="pageButtonOptionHint"></small></span>
+          </label>
+          <p class="note"><button id="reset-backup" type="button" class="link" data-i18n="resetBackup"></button></p>
+        </details>
+
+        <p id="bulk-note" class="note" data-i18n="bulkNote" hidden></p>
+      </form>
+    </main>
+
+    <footer class="dock">
+      <div id="progress" class="progress" hidden>
+        <p id="progress-text" role="status" aria-live="polite"></p>
+        <progress id="progress-bar" max="1"></progress>
+        <button id="cancel" type="button" class="link" data-i18n="panelCancel"></button>
+      </div>
+      <p id="status" role="status" aria-live="polite"></p>
+      <button id="download" type="submit" form="export-form"><span id="download-label" data-i18n="downloadButton"></span> <span aria-hidden="true">↓</span></button>
+      <p class="fine"><span data-i18n="footerLocal"></span> <span data-i18n="footerDisclaimer"></span></p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,547 @@
+{
+  "extName": {
+    "message": "Téléchargeur de discussions pour ChatGPT"
+  },
+  "extDescription": {
+    "message": "Enregistrez vos discussions ChatGPT en PDF, Word, Markdown, HTML ou JSON avec pièces jointes. Tout reste sur votre appareil."
+  },
+  "actionTitle": {
+    "message": "Téléchargeur de discussions"
+  },
+  "commandDescription": {
+    "message": "Ouvrir le panneau du téléchargeur"
+  },
+  "tabChat": {
+    "message": "Discussion ouverte"
+  },
+  "tabSite": {
+    "message": "chatgpt.com — aucune discussion enregistrée ouverte"
+  },
+  "tabOther": {
+    "message": "Vous n'êtes pas sur un onglet chatgpt.com"
+  },
+  "pickLoading": {
+    "message": "Chargement des discussions…"
+  },
+  "pickReload": {
+    "message": "Recharger la liste"
+  },
+  "pickCurrent": {
+    "message": "Ouverte"
+  },
+  "errListFailed": {
+    "message": "Impossible de charger la liste des discussions."
+  },
+  "errNoSelection": {
+    "message": "Sélectionnez au moins une discussion à télécharger."
+  },
+  "scopeLabel": {
+    "message": "Choisir quoi télécharger"
+  },
+  "scopeCurrent": {
+    "message": "Discussion ouverte"
+  },
+  "scopeAll": {
+    "message": "Toutes"
+  },
+  "scopeChoose": {
+    "message": "Choisir"
+  },
+  "pickTitle": {
+    "message": "Discussions à télécharger"
+  },
+  "pickSearch": {
+    "message": "Rechercher des discussions"
+  },
+  "pickAll": {
+    "message": "Tout sélectionner"
+  },
+  "pickNone": {
+    "message": "Effacer la sélection"
+  },
+  "pickCount": {
+    "message": "$P1$ sur $P2$ sélectionnées",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "pickStart": {
+    "message": "Télécharger $P1$ discussions",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "pickEmpty": {
+    "message": "Aucune discussion correspondante."
+  },
+  "htmlRecent": {
+    "message": "Récentes"
+  },
+  "htmlSearch": {
+    "message": "Rechercher des discussions"
+  },
+  "htmlPickChat": {
+    "message": "Choisissez une discussion à gauche"
+  },
+  "htmlChatsWord": {
+    "message": "discussions"
+  },
+  "htmlMenu": {
+    "message": "Ouvrir le menu"
+  },
+  "htmlCloseMenu": {
+    "message": "Fermer le menu"
+  },
+  "htmlNoMatch": {
+    "message": "Aucune discussion correspondante."
+  },
+  "renderCopy": {
+    "message": "Copier"
+  },
+  "renderCopied": {
+    "message": "Copié"
+  },
+  "formatsLegend": {
+    "message": "Formats"
+  },
+  "attachmentsTitle": {
+    "message": "Télécharger aussi les pièces jointes"
+  },
+  "attachmentsHint": {
+    "message": "Les fichiers envoyés, les images et les fichiers créés par ChatGPT sont ajoutés au ZIP."
+  },
+  "textModeLink": {
+    "message": "Nom et lien pour les pièces jointes TXT/MD"
+  },
+  "textModeLinkHint": {
+    "message": "Le texte de la discussion reste plus court."
+  },
+  "textModeFull": {
+    "message": "Contenu complet des pièces jointes TXT/MD"
+  },
+  "textModeFullHint": {
+    "message": "Le texte s'affiche sous le message concerné."
+  },
+  "stepsTitle": {
+    "message": "Étapes d'outils et de raisonnement"
+  },
+  "stepsHint": {
+    "message": "Inclut l'exécution de code, les recherches web et les résumés de raisonnement."
+  },
+  "bulkNote": {
+    "message": "Toutes les discussions sont exportées sans pièces jointes (seulement les images si la galerie est activée). Cela peut prendre quelques minutes."
+  },
+  "downloadButton": {
+    "message": "Télécharger"
+  },
+  "footerLocal": {
+    "message": "Tout s'exécute dans votre navigateur ; aucune donnée n'est envoyée à un tiers."
+  },
+  "footerDisclaimer": {
+    "message": "Non affilié à OpenAI. ChatGPT est une marque d'OpenAI."
+  },
+  "errOpenChat": {
+    "message": "Ouvrez d'abord sur chatgpt.com la discussion enregistrée à télécharger."
+  },
+  "errWrongSite": {
+    "message": "Ouvrez un onglet chatgpt.com pour utiliser cette option."
+  },
+  "errNoFormat": {
+    "message": "Sélectionnez au moins un format."
+  },
+  "errNoChat": {
+    "message": "Ouvrez une discussion enregistrée ; son adresse doit contenir /c/."
+  },
+  "errInternal": {
+    "message": "Les fichiers de l'extension n'ont pas pu être chargés ; rechargez la page et réessayez."
+  },
+  "errRunning": {
+    "message": "Un téléchargement est déjà en cours dans cet onglet."
+  },
+  "errSession": {
+    "message": "Impossible d'obtenir la session"
+  },
+  "errNoToken": {
+    "message": "Aucune session trouvée ; connectez-vous à ChatGPT et rechargez la page."
+  },
+  "errNoConversations": {
+    "message": "Aucune discussion à télécharger."
+  },
+  "errNoDownloadUrl": {
+    "message": "Aucune adresse de téléchargement ; le point d'accès a peut-être changé."
+  },
+  "errHtmlInstead": {
+    "message": "Une réponse HTML a été reçue à la place du fichier."
+  },
+  "errFormatChanged": {
+    "message": "Le format des données a changé ; impossible de créer une archive complète."
+  },
+  "errCouldNotStart": {
+    "message": "Le téléchargement n'a pas pu démarrer."
+  },
+  "statusStarting": {
+    "message": "Démarrage…"
+  },
+  "statusStarted": {
+    "message": "Démarré. La progression s'affiche ici et en bas à droite de la page."
+  },
+  "statusPreparing": {
+    "message": "Préparation…"
+  },
+  "statusFetching": {
+    "message": "Récupération de la discussion…"
+  },
+  "statusAttachment": {
+    "message": "Pièce jointe $P1$/$P2$ : $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusListing": {
+    "message": "Récupération de la liste… ($P1$)",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "statusBulk": {
+    "message": "Discussion $P1$/$P2$ : $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusZipping": {
+    "message": "Création du ZIP…"
+  },
+  "statusDone": {
+    "message": "Terminé. Pièces jointes : $P1$ réussies, $P2$ échouées. Médias non résolus : $P3$. Comparez le rapport avec la discussion. Si le téléchargement ne démarre pas, cliquez sur « Télécharger le fichier » sur la page.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusDoneFile": {
+    "message": "Terminé. Si le téléchargement ne démarre pas, cliquez sur « Télécharger le fichier » sur la page."
+  },
+  "statusDoneBulk": {
+    "message": "Terminé. $P1$ discussions exportées, $P2$ ignorées (voir le rapport). Si le téléchargement ne démarre pas, cliquez sur « Télécharger le fichier » sur la page.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusCancelled": {
+    "message": "Annulé."
+  },
+  "statusFailed": {
+    "message": "Échec de l'export"
+  },
+  "panelTitle": {
+    "message": "Téléchargeur de discussions"
+  },
+  "panelClose": {
+    "message": "Fermer la fenêtre d'état"
+  },
+  "panelCancel": {
+    "message": "Annuler"
+  },
+  "panelDownload": {
+    "message": "Télécharger le fichier"
+  },
+  "panelCopy": {
+    "message": "Copier le Markdown"
+  },
+  "panelCopied": {
+    "message": "Copié ✓"
+  },
+  "panelCopyFailed": {
+    "message": "Copie impossible"
+  },
+  "bulkIndexTitle": {
+    "message": "Toutes les discussions"
+  },
+  "readmeText": {
+    "message": "conversation.json : tous les nœuds de la discussion et leurs métadonnées, tels que renvoyés par le serveur.\nconversation.md / .html / .txt / .docx : version lisible de la branche sélectionnée.\ngaleri.html : galerie des images des discussions (si sélectionnée).\nekler/ : pièces jointes téléchargées avec succès.\nindirme-raporu.json : pièces jointes trouvées, erreurs et médias non résolus.\n\nCette extension utilise des formats de données internes non officiels de ChatGPT. Les nouveaux types de médias ou de pièces jointes peuvent ne pas être reconnus. Un rapport sans erreur ne garantit pas que toutes les pièces jointes ont été trouvées ; comparez-le avec la discussion. Les pièces jointes expirées ou supprimées ne peuvent pas être récupérées.\n"
+  },
+  "renderUntitled": {
+    "message": "Discussion sans titre"
+  },
+  "renderUser": {
+    "message": "Vous"
+  },
+  "renderAssistant": {
+    "message": "ChatGPT"
+  },
+  "renderStep": {
+    "message": "Étape"
+  },
+  "renderThinking": {
+    "message": "Raisonnement"
+  },
+  "renderCreated": {
+    "message": "Créée"
+  },
+  "renderUpdated": {
+    "message": "Mise à jour"
+  },
+  "renderExported": {
+    "message": "Exportée"
+  },
+  "renderImage": {
+    "message": "image"
+  },
+  "renderSources": {
+    "message": "Sources"
+  },
+  "renderAttachments": {
+    "message": "Pièces jointes"
+  },
+  "renderAttachmentContent": {
+    "message": "Contenu de la pièce jointe"
+  },
+  "renderLeftover": {
+    "message": "Pièces jointes d'autres branches de la discussion"
+  },
+  "renderFailed": {
+    "message": "échec du téléchargement"
+  },
+  "renderSkipped": {
+    "message": "non téléchargée"
+  },
+  "renderTextDecodeError": {
+    "message": "Le texte n'a pas pu être lu en UTF-8 ou UTF-16 avec BOM ; la pièce jointe d'origine est dans le ZIP."
+  },
+  "tabShare": {
+    "message": "Lien partagé"
+  },
+  "msgOnlyTitle": {
+    "message": "Seulement les messages choisis"
+  },
+  "msgOnlyHint": {
+    "message": "Cochez les messages un à un ; Maj+clic pour une plage."
+  },
+  "msgAll": {
+    "message": "Tous"
+  },
+  "msgAnswers": {
+    "message": "Réponses seulement"
+  },
+  "msgPrompts": {
+    "message": "Mes questions seulement"
+  },
+  "msgLoading": {
+    "message": "Chargement des messages…"
+  },
+  "msgEmpty": {
+    "message": "Aucun message à afficher."
+  },
+  "filterLabel": {
+    "message": "Filtre"
+  },
+  "filterAll": {
+    "message": "Toutes les discussions"
+  },
+  "filterNoProject": {
+    "message": "Sans projet"
+  },
+  "filterArchived": {
+    "message": "Archivées"
+  },
+  "filterArchivedShort": {
+    "message": "Archive"
+  },
+  "filterGpt": {
+    "message": "Discussions GPT"
+  },
+  "filterProject": {
+    "message": "Projet"
+  },
+  "filterFrom": {
+    "message": "Date de début"
+  },
+  "filterTo": {
+    "message": "Date de fin"
+  },
+  "pdfNote": {
+    "message": "Le PDF s'ouvre dans un nouvel onglet avec la fenêtre d'impression ; choisissez « Enregistrer au format PDF ». Aucun serveur, aucune limite."
+  },
+  "galleryOption": {
+    "message": "Galerie d'images"
+  },
+  "galleryOptionHint": {
+    "message": "Rassemble toutes les images des discussions (y compris générées) sur une page."
+  },
+  "obsidianOption": {
+    "message": "Markdown compatible Obsidian"
+  },
+  "obsidianOptionHint": {
+    "message": "Ajoute un en-tête YAML (titre, dates, modèle, lien) ; la note porte le titre de la discussion."
+  },
+  "incrementalOption": {
+    "message": "Seulement les discussions modifiées"
+  },
+  "incrementalHint": {
+    "message": "Les discussions inchangées depuis la dernière sauvegarde sont ignorées."
+  },
+  "incrementalInfo": {
+    "message": "La dernière sauvegarde contient $P1$ discussions ; les inchangées sont ignorées.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "saveLegend": {
+    "message": "Enregistrer dans"
+  },
+  "saveZip": {
+    "message": "Téléchargements (ZIP)"
+  },
+  "saveFolder": {
+    "message": "Un dossier"
+  },
+  "folderPick": {
+    "message": "Choisir un dossier"
+  },
+  "folderNone": {
+    "message": "Aucun dossier choisi"
+  },
+  "folderNote": {
+    "message": "Les fichiers sont écrits dans le dossier choisi (par ex. un coffre Obsidian) ; l'archive et l'index existants sont mis à jour. Gardez le panneau ouvert."
+  },
+  "advancedTitle": {
+    "message": "Avancé"
+  },
+  "pageButtonOption": {
+    "message": "Bouton « Télécharger » sur la page ChatGPT"
+  },
+  "pageButtonOptionHint": {
+    "message": "À côté du bouton Partager ; utilise vos derniers réglages."
+  },
+  "resetBackup": {
+    "message": "Réinitialiser l'historique des sauvegardes"
+  },
+  "resetBackupDone": {
+    "message": "Historique réinitialisé ; la prochaine sauvegarde inclura toutes les discussions."
+  },
+  "pageButtonLabel": {
+    "message": "Télécharger"
+  },
+  "pageButtonTitle": {
+    "message": "Télécharger cette discussion (Téléchargeur de discussions)"
+  },
+  "menuExportLink": {
+    "message": "Télécharger cette discussion"
+  },
+  "menuExportPage": {
+    "message": "Télécharger la discussion ouverte"
+  },
+  "menuOpenPanel": {
+    "message": "Ouvrir le panneau du téléchargeur"
+  },
+  "printTitle": {
+    "message": "PDF"
+  },
+  "printHint": {
+    "message": "Dans la fenêtre d'impression, choisissez « Enregistrer au format PDF »."
+  },
+  "printButton": {
+    "message": "Imprimer / Enregistrer en PDF"
+  },
+  "printExpired": {
+    "message": "Cette page d'impression a expiré ; recréez le PDF depuis le panneau latéral."
+  },
+  "galleryTitle": {
+    "message": "Galerie d'images"
+  },
+  "galleryImagesWord": {
+    "message": "images"
+  },
+  "galleryEmpty": {
+    "message": "Aucune image trouvée dans cet export."
+  },
+  "renderCanvasUpdated": {
+    "message": "mis à jour"
+  },
+  "statusWord": {
+    "message": "Création du document Word…"
+  },
+  "statusPdf": {
+    "message": "Préparation de la page PDF…"
+  },
+  "statusFolder": {
+    "message": "Écriture dans le dossier $P1$/$P2$…",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusDonePdf": {
+    "message": "Terminé. Le PDF s'est ouvert dans un nouvel onglet ; choisissez « Enregistrer au format PDF »."
+  },
+  "statusSkippedUnchanged": {
+    "message": "$P1$ discussions inchangées ignorées.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "errNoFolder": {
+    "message": "Choisissez d'abord le dossier de destination."
+  },
+  "errFolderPermission": {
+    "message": "L'autorisation d'écrire dans le dossier n'a pas été accordée."
+  },
+  "errFolder": {
+    "message": "Impossible d'écrire dans le dossier."
+  },
+  "errFolderPanel": {
+    "message": "Impossible d'écrire dans le dossier car le panneau a été fermé ; gardez-le ouvert et réessayez."
+  },
+  "errPrint": {
+    "message": "Impossible d'ouvrir la page PDF."
+  },
+  "errNoMessages": {
+    "message": "Sélectionnez au moins un message."
+  }
+}

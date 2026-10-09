@@ -1,0 +1,12 @@
+# Build output (tools/build.sh)
+dist/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local test artifacts (e2e certs, Chrome profiles, downloads)
+*.pem
+node_modules/

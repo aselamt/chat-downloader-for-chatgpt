@@ -1,0 +1,547 @@
+{
+  "extName": {
+    "message": "Загрузчик чатов для ChatGPT"
+  },
+  "extDescription": {
+    "message": "Сохраняйте чаты ChatGPT в PDF, Word, Markdown, HTML или JSON вместе с вложениями. Работает локально, данные не покидают устройство."
+  },
+  "actionTitle": {
+    "message": "Загрузчик чатов"
+  },
+  "commandDescription": {
+    "message": "Открыть панель загрузчика чатов"
+  },
+  "tabChat": {
+    "message": "Открытый чат"
+  },
+  "tabSite": {
+    "message": "chatgpt.com — сохранённый чат не открыт"
+  },
+  "tabOther": {
+    "message": "Вы не на вкладке chatgpt.com"
+  },
+  "pickLoading": {
+    "message": "Загрузка чатов…"
+  },
+  "pickReload": {
+    "message": "Обновить список"
+  },
+  "pickCurrent": {
+    "message": "Открыт"
+  },
+  "errListFailed": {
+    "message": "Не удалось загрузить список чатов."
+  },
+  "errNoSelection": {
+    "message": "Выберите хотя бы один чат для загрузки."
+  },
+  "scopeLabel": {
+    "message": "Что скачать"
+  },
+  "scopeCurrent": {
+    "message": "Открытый чат"
+  },
+  "scopeAll": {
+    "message": "Все чаты"
+  },
+  "scopeChoose": {
+    "message": "Выбрать"
+  },
+  "pickTitle": {
+    "message": "Чаты для загрузки"
+  },
+  "pickSearch": {
+    "message": "Поиск по чатам"
+  },
+  "pickAll": {
+    "message": "Выбрать все"
+  },
+  "pickNone": {
+    "message": "Снять выбор"
+  },
+  "pickCount": {
+    "message": "Выбрано $P1$ из $P2$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "pickStart": {
+    "message": "Скачать чаты: $P1$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "pickEmpty": {
+    "message": "Подходящих чатов нет."
+  },
+  "htmlRecent": {
+    "message": "Недавние"
+  },
+  "htmlSearch": {
+    "message": "Поиск по чатам"
+  },
+  "htmlPickChat": {
+    "message": "Выберите чат слева"
+  },
+  "htmlChatsWord": {
+    "message": "чатов"
+  },
+  "htmlMenu": {
+    "message": "Открыть меню"
+  },
+  "htmlCloseMenu": {
+    "message": "Закрыть меню"
+  },
+  "htmlNoMatch": {
+    "message": "Подходящих чатов нет."
+  },
+  "renderCopy": {
+    "message": "Копировать"
+  },
+  "renderCopied": {
+    "message": "Скопировано"
+  },
+  "formatsLegend": {
+    "message": "Форматы"
+  },
+  "attachmentsTitle": {
+    "message": "Скачать и вложения"
+  },
+  "attachmentsHint": {
+    "message": "Загруженные файлы, изображения и файлы, созданные ChatGPT, добавляются в ZIP."
+  },
+  "textModeLink": {
+    "message": "Имя и ссылка для вложений TXT/MD"
+  },
+  "textModeLinkHint": {
+    "message": "Текст чата получается короче."
+  },
+  "textModeFull": {
+    "message": "Полное содержимое вложений TXT/MD"
+  },
+  "textModeFullHint": {
+    "message": "Текст показывается под соответствующим сообщением."
+  },
+  "stepsTitle": {
+    "message": "Шаги инструментов и рассуждений"
+  },
+  "stepsHint": {
+    "message": "Включает выполнение кода, веб-поиск и сводки рассуждений."
+  },
+  "bulkNote": {
+    "message": "Все чаты экспортируются без вложений (только изображения, если включена галерея). Это может занять несколько минут."
+  },
+  "downloadButton": {
+    "message": "Скачать"
+  },
+  "footerLocal": {
+    "message": "Всё работает в вашем браузере; данные никому не передаются."
+  },
+  "footerDisclaimer": {
+    "message": "Не связано с OpenAI. ChatGPT — товарный знак OpenAI."
+  },
+  "errOpenChat": {
+    "message": "Сначала откройте на chatgpt.com сохранённый чат, который хотите скачать."
+  },
+  "errWrongSite": {
+    "message": "Откройте вкладку chatgpt.com, чтобы использовать этот вариант."
+  },
+  "errNoFormat": {
+    "message": "Выберите хотя бы один формат."
+  },
+  "errNoChat": {
+    "message": "Откройте сохранённый чат; его адрес должен содержать /c/."
+  },
+  "errInternal": {
+    "message": "Не удалось загрузить файлы расширения; обновите страницу и повторите попытку."
+  },
+  "errRunning": {
+    "message": "В этой вкладке уже идёт загрузка."
+  },
+  "errSession": {
+    "message": "Не удалось получить сеанс"
+  },
+  "errNoToken": {
+    "message": "Сеанс не найден; войдите в ChatGPT и обновите страницу."
+  },
+  "errNoConversations": {
+    "message": "Нет чатов для загрузки."
+  },
+  "errNoDownloadUrl": {
+    "message": "Нет адреса загрузки; возможно, сервис изменился."
+  },
+  "errHtmlInstead": {
+    "message": "Вместо файла получен HTML-ответ."
+  },
+  "errFormatChanged": {
+    "message": "Формат данных изменился; создать полный архив невозможно."
+  },
+  "errCouldNotStart": {
+    "message": "Не удалось начать загрузку."
+  },
+  "statusStarting": {
+    "message": "Запуск…"
+  },
+  "statusStarted": {
+    "message": "Запущено. Ход выполнения показан здесь и в правом нижнем углу страницы."
+  },
+  "statusPreparing": {
+    "message": "Подготовка…"
+  },
+  "statusFetching": {
+    "message": "Получение чата…"
+  },
+  "statusAttachment": {
+    "message": "Вложение $P1$/$P2$: $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusListing": {
+    "message": "Получение списка чатов… ($P1$)",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "statusBulk": {
+    "message": "Чат $P1$/$P2$: $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusZipping": {
+    "message": "Создание ZIP…"
+  },
+  "statusDone": {
+    "message": "Готово. Вложения: успешно — $P1$, с ошибкой — $P2$. Нераспознанные медиа: $P3$. Сверьте отчёт с чатом. Если загрузка не началась, нажмите «Скачать файл» на странице.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusDoneFile": {
+    "message": "Готово. Если загрузка не началась, нажмите «Скачать файл» на странице."
+  },
+  "statusDoneBulk": {
+    "message": "Готово. Экспортировано чатов: $P1$, пропущено: $P2$ (подробности в отчёте). Если загрузка не началась, нажмите «Скачать файл» на странице.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusCancelled": {
+    "message": "Отменено."
+  },
+  "statusFailed": {
+    "message": "Ошибка экспорта"
+  },
+  "panelTitle": {
+    "message": "Загрузчик чатов"
+  },
+  "panelClose": {
+    "message": "Закрыть окно состояния"
+  },
+  "panelCancel": {
+    "message": "Отмена"
+  },
+  "panelDownload": {
+    "message": "Скачать файл"
+  },
+  "panelCopy": {
+    "message": "Копировать Markdown"
+  },
+  "panelCopied": {
+    "message": "Скопировано ✓"
+  },
+  "panelCopyFailed": {
+    "message": "Не удалось скопировать"
+  },
+  "bulkIndexTitle": {
+    "message": "Все чаты"
+  },
+  "readmeText": {
+    "message": "conversation.json: все узлы чата и их метаданные в том виде, в каком их вернул сервер.\nconversation.md / .html / .txt / .docx: читаемая версия выбранной ветки.\ngaleri.html: галерея изображений из чатов (если выбрана).\nekler/: успешно загруженные вложения.\nindirme-raporu.json: найденные вложения, ошибки и нераспознанные медиа.\n\nРасширение использует неофициальные внутренние форматы данных ChatGPT. Новые типы медиа и вложений могут не распознаваться. Отчёт без ошибок не гарантирует, что найдены все вложения; сверьте его с чатом. Просроченные или удалённые вложения восстановить нельзя.\n"
+  },
+  "renderUntitled": {
+    "message": "Чат без названия"
+  },
+  "renderUser": {
+    "message": "Вы"
+  },
+  "renderAssistant": {
+    "message": "ChatGPT"
+  },
+  "renderStep": {
+    "message": "Шаг"
+  },
+  "renderThinking": {
+    "message": "Рассуждение"
+  },
+  "renderCreated": {
+    "message": "Создан"
+  },
+  "renderUpdated": {
+    "message": "Обновлён"
+  },
+  "renderExported": {
+    "message": "Экспортирован"
+  },
+  "renderImage": {
+    "message": "изображение"
+  },
+  "renderSources": {
+    "message": "Источники"
+  },
+  "renderAttachments": {
+    "message": "Вложения"
+  },
+  "renderAttachmentContent": {
+    "message": "Содержимое вложения"
+  },
+  "renderLeftover": {
+    "message": "Вложения из других веток чата"
+  },
+  "renderFailed": {
+    "message": "ошибка загрузки"
+  },
+  "renderSkipped": {
+    "message": "не загружено"
+  },
+  "renderTextDecodeError": {
+    "message": "Не удалось прочитать текст как UTF-8 или UTF-16 с BOM; исходное вложение находится в ZIP."
+  },
+  "tabShare": {
+    "message": "Общая ссылка"
+  },
+  "msgOnlyTitle": {
+    "message": "Только выбранные сообщения"
+  },
+  "msgOnlyHint": {
+    "message": "Отмечайте сообщения по одному; Shift+щелчок — диапазон."
+  },
+  "msgAll": {
+    "message": "Все"
+  },
+  "msgAnswers": {
+    "message": "Только ответы"
+  },
+  "msgPrompts": {
+    "message": "Только мои вопросы"
+  },
+  "msgLoading": {
+    "message": "Загрузка сообщений…"
+  },
+  "msgEmpty": {
+    "message": "Нет сообщений."
+  },
+  "filterLabel": {
+    "message": "Фильтр"
+  },
+  "filterAll": {
+    "message": "Все чаты"
+  },
+  "filterNoProject": {
+    "message": "Без проекта"
+  },
+  "filterArchived": {
+    "message": "В архиве"
+  },
+  "filterArchivedShort": {
+    "message": "Архив"
+  },
+  "filterGpt": {
+    "message": "Чаты с GPT"
+  },
+  "filterProject": {
+    "message": "Проект"
+  },
+  "filterFrom": {
+    "message": "С даты"
+  },
+  "filterTo": {
+    "message": "По дату"
+  },
+  "pdfNote": {
+    "message": "PDF откроется в новой вкладке с окном печати; выберите «Сохранить как PDF». Без сервера и без ограничений."
+  },
+  "galleryOption": {
+    "message": "Галерея изображений"
+  },
+  "galleryOptionHint": {
+    "message": "Собирает все изображения из чатов (включая сгенерированные) на одной странице."
+  },
+  "obsidianOption": {
+    "message": "Markdown для Obsidian"
+  },
+  "obsidianOptionHint": {
+    "message": "Добавляет YAML-заголовок (название, даты, модель, ссылка); заметка называется как чат."
+  },
+  "incrementalOption": {
+    "message": "Только изменённые чаты"
+  },
+  "incrementalHint": {
+    "message": "Чаты без изменений с последней резервной копии пропускаются."
+  },
+  "incrementalInfo": {
+    "message": "В последней копии $P1$ чатов; неизменённые пропускаются.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "saveLegend": {
+    "message": "Куда сохранить"
+  },
+  "saveZip": {
+    "message": "Загрузки (ZIP)"
+  },
+  "saveFolder": {
+    "message": "В папку"
+  },
+  "folderPick": {
+    "message": "Выбрать папку"
+  },
+  "folderNone": {
+    "message": "Папка не выбрана"
+  },
+  "folderNote": {
+    "message": "Файлы записываются в выбранную папку (например, хранилище Obsidian); существующий архив и индекс обновляются. Не закрывайте боковую панель."
+  },
+  "advancedTitle": {
+    "message": "Дополнительно"
+  },
+  "pageButtonOption": {
+    "message": "Кнопка «Скачать» на странице ChatGPT"
+  },
+  "pageButtonOptionHint": {
+    "message": "Рядом с кнопкой «Поделиться»; использует последние настройки."
+  },
+  "resetBackup": {
+    "message": "Сбросить историю копий"
+  },
+  "resetBackupDone": {
+    "message": "История сброшена; следующая копия будет содержать все чаты."
+  },
+  "pageButtonLabel": {
+    "message": "Скачать"
+  },
+  "pageButtonTitle": {
+    "message": "Скачать этот чат (Загрузчик чатов)"
+  },
+  "menuExportLink": {
+    "message": "Скачать этот чат"
+  },
+  "menuExportPage": {
+    "message": "Скачать открытый чат"
+  },
+  "menuOpenPanel": {
+    "message": "Открыть панель загрузчика чатов"
+  },
+  "printTitle": {
+    "message": "PDF"
+  },
+  "printHint": {
+    "message": "В окне печати выберите «Сохранить как PDF»."
+  },
+  "printButton": {
+    "message": "Печать / Сохранить как PDF"
+  },
+  "printExpired": {
+    "message": "Срок действия страницы печати истёк; создайте PDF заново из боковой панели."
+  },
+  "galleryTitle": {
+    "message": "Галерея изображений"
+  },
+  "galleryImagesWord": {
+    "message": "изображений"
+  },
+  "galleryEmpty": {
+    "message": "В этом экспорте изображений не найдено."
+  },
+  "renderCanvasUpdated": {
+    "message": "обновлено"
+  },
+  "statusWord": {
+    "message": "Создание документа Word…"
+  },
+  "statusPdf": {
+    "message": "Подготовка страницы PDF…"
+  },
+  "statusFolder": {
+    "message": "Запись в папку $P1$/$P2$…",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusDonePdf": {
+    "message": "Готово. PDF открыт в новой вкладке; выберите «Сохранить как PDF» в окне печати."
+  },
+  "statusSkippedUnchanged": {
+    "message": "Пропущено неизменённых чатов: $P1$.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "errNoFolder": {
+    "message": "Сначала выберите папку для сохранения."
+  },
+  "errFolderPermission": {
+    "message": "Разрешение на запись в папку не получено."
+  },
+  "errFolder": {
+    "message": "Не удалось записать в папку."
+  },
+  "errFolderPanel": {
+    "message": "Не удалось записать в папку: боковая панель закрыта. Оставьте её открытой и повторите."
+  },
+  "errPrint": {
+    "message": "Не удалось открыть страницу PDF."
+  },
+  "errNoMessages": {
+    "message": "Выберите хотя бы одно сообщение."
+  }
+}

@@ -1,0 +1,547 @@
+{
+  "extName": {
+    "message": "ChatGPT 聊天下载器"
+  },
+  "extDescription": {
+    "message": "将 ChatGPT 聊天连同附件保存为 PDF、Word、Markdown、HTML 或 JSON。完全在本地运行，数据不会离开你的设备。"
+  },
+  "actionTitle": {
+    "message": "聊天下载器"
+  },
+  "commandDescription": {
+    "message": "打开聊天下载器面板"
+  },
+  "tabChat": {
+    "message": "已打开的聊天"
+  },
+  "tabSite": {
+    "message": "chatgpt.com — 未打开已保存的聊天"
+  },
+  "tabOther": {
+    "message": "当前不在 chatgpt.com 标签页"
+  },
+  "pickLoading": {
+    "message": "正在加载聊天…"
+  },
+  "pickReload": {
+    "message": "重新加载列表"
+  },
+  "pickCurrent": {
+    "message": "当前"
+  },
+  "errListFailed": {
+    "message": "无法加载聊天列表。"
+  },
+  "errNoSelection": {
+    "message": "请至少选择一个要下载的聊天。"
+  },
+  "scopeLabel": {
+    "message": "选择要下载的内容"
+  },
+  "scopeCurrent": {
+    "message": "当前聊天"
+  },
+  "scopeAll": {
+    "message": "全部聊天"
+  },
+  "scopeChoose": {
+    "message": "选择聊天"
+  },
+  "pickTitle": {
+    "message": "要下载的聊天"
+  },
+  "pickSearch": {
+    "message": "搜索聊天"
+  },
+  "pickAll": {
+    "message": "全选"
+  },
+  "pickNone": {
+    "message": "清除选择"
+  },
+  "pickCount": {
+    "message": "已选 $P1$ / $P2$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "pickStart": {
+    "message": "下载 $P1$ 个聊天",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "pickEmpty": {
+    "message": "没有匹配的聊天。"
+  },
+  "htmlRecent": {
+    "message": "最近"
+  },
+  "htmlSearch": {
+    "message": "搜索聊天"
+  },
+  "htmlPickChat": {
+    "message": "请在左侧选择一个聊天"
+  },
+  "htmlChatsWord": {
+    "message": "个聊天"
+  },
+  "htmlMenu": {
+    "message": "打开菜单"
+  },
+  "htmlCloseMenu": {
+    "message": "关闭菜单"
+  },
+  "htmlNoMatch": {
+    "message": "没有匹配的聊天。"
+  },
+  "renderCopy": {
+    "message": "复制"
+  },
+  "renderCopied": {
+    "message": "已复制"
+  },
+  "formatsLegend": {
+    "message": "格式"
+  },
+  "attachmentsTitle": {
+    "message": "同时下载附件"
+  },
+  "attachmentsHint": {
+    "message": "上传的文件、图片以及 ChatGPT 生成的文件会加入 ZIP。"
+  },
+  "textModeLink": {
+    "message": "TXT/MD 附件只保留文件名和链接"
+  },
+  "textModeLinkHint": {
+    "message": "聊天正文更简短。"
+  },
+  "textModeFull": {
+    "message": "包含 TXT/MD 附件的全部内容"
+  },
+  "textModeFullHint": {
+    "message": "内容显示在对应消息下方。"
+  },
+  "stepsTitle": {
+    "message": "工具与推理步骤"
+  },
+  "stepsHint": {
+    "message": "包括代码执行、网页搜索和推理摘要。"
+  },
+  "bulkNote": {
+    "message": "全部聊天导出时不含附件(开启图库时只包含图片)。根据聊天数量，可能需要几分钟。"
+  },
+  "downloadButton": {
+    "message": "下载"
+  },
+  "footerLocal": {
+    "message": "一切都在你的浏览器中运行，不会向任何第三方发送数据。"
+  },
+  "footerDisclaimer": {
+    "message": "与 OpenAI 无关。ChatGPT 是 OpenAI 的商标。"
+  },
+  "errOpenChat": {
+    "message": "请先在 chatgpt.com 打开要下载的已保存聊天。"
+  },
+  "errWrongSite": {
+    "message": "请打开 chatgpt.com 标签页以使用此选项。"
+  },
+  "errNoFormat": {
+    "message": "请至少选择一种格式。"
+  },
+  "errNoChat": {
+    "message": "请打开已保存的聊天，其地址必须包含 /c/。"
+  },
+  "errInternal": {
+    "message": "无法加载扩展文件，请刷新页面后重试。"
+  },
+  "errRunning": {
+    "message": "此标签页中已有下载在进行。"
+  },
+  "errSession": {
+    "message": "无法获取会话"
+  },
+  "errNoToken": {
+    "message": "未找到会话，请登录 ChatGPT 后刷新页面。"
+  },
+  "errNoConversations": {
+    "message": "没有可下载的聊天。"
+  },
+  "errNoDownloadUrl": {
+    "message": "没有下载地址，服务接口可能已更改。"
+  },
+  "errHtmlInstead": {
+    "message": "收到的是 HTML 响应而不是文件。"
+  },
+  "errFormatChanged": {
+    "message": "聊天数据格式已更改，无法生成完整存档。"
+  },
+  "errCouldNotStart": {
+    "message": "无法开始下载。"
+  },
+  "statusStarting": {
+    "message": "正在开始…"
+  },
+  "statusStarted": {
+    "message": "已开始。进度显示在此处和页面右下角。"
+  },
+  "statusPreparing": {
+    "message": "正在准备…"
+  },
+  "statusFetching": {
+    "message": "正在获取聊天…"
+  },
+  "statusAttachment": {
+    "message": "附件 $P1$/$P2$：$P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusListing": {
+    "message": "正在获取聊天列表… ($P1$)",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "statusBulk": {
+    "message": "聊天 $P1$/$P2$：$P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusZipping": {
+    "message": "正在生成 ZIP…"
+  },
+  "statusDone": {
+    "message": "完成。附件：成功 $P1$ 个，失败 $P2$ 个。无法解析的媒体：$P3$ 个。请将报告与聊天对照。如果下载没有开始，请点击页面上的“下载文件”。",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusDoneFile": {
+    "message": "完成。如果下载没有开始，请点击页面上的“下载文件”。"
+  },
+  "statusDoneBulk": {
+    "message": "完成。已导出 $P1$ 个聊天，跳过 $P2$ 个(详见报告)。如果下载没有开始，请点击页面上的“下载文件”。",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusCancelled": {
+    "message": "已取消。"
+  },
+  "statusFailed": {
+    "message": "导出失败"
+  },
+  "panelTitle": {
+    "message": "聊天下载器"
+  },
+  "panelClose": {
+    "message": "关闭状态窗口"
+  },
+  "panelCancel": {
+    "message": "取消"
+  },
+  "panelDownload": {
+    "message": "下载文件"
+  },
+  "panelCopy": {
+    "message": "复制 Markdown"
+  },
+  "panelCopied": {
+    "message": "已复制 ✓"
+  },
+  "panelCopyFailed": {
+    "message": "无法复制"
+  },
+  "bulkIndexTitle": {
+    "message": "全部聊天"
+  },
+  "readmeText": {
+    "message": "conversation.json：服务器返回的全部聊天节点及其元数据。\nconversation.md / .html / .txt / .docx：所选分支的可读版本。\ngaleri.html：聊天中图片的图库(如已选择)。\nekler/：成功下载的附件。\nindirme-raporu.json：找到的附件、错误和无法解析的媒体。\n\n本扩展使用 ChatGPT 非官方的内部数据格式，可能无法识别新的媒体或附件类型。报告中没有错误并不保证找到了所有附件，请与聊天对照。已过期或已删除的附件无法恢复。\n"
+  },
+  "renderUntitled": {
+    "message": "未命名聊天"
+  },
+  "renderUser": {
+    "message": "你"
+  },
+  "renderAssistant": {
+    "message": "ChatGPT"
+  },
+  "renderStep": {
+    "message": "步骤"
+  },
+  "renderThinking": {
+    "message": "推理"
+  },
+  "renderCreated": {
+    "message": "创建"
+  },
+  "renderUpdated": {
+    "message": "更新"
+  },
+  "renderExported": {
+    "message": "导出"
+  },
+  "renderImage": {
+    "message": "图片"
+  },
+  "renderSources": {
+    "message": "来源"
+  },
+  "renderAttachments": {
+    "message": "附件"
+  },
+  "renderAttachmentContent": {
+    "message": "附件内容"
+  },
+  "renderLeftover": {
+    "message": "其他分支中的附件"
+  },
+  "renderFailed": {
+    "message": "下载失败"
+  },
+  "renderSkipped": {
+    "message": "未下载"
+  },
+  "renderTextDecodeError": {
+    "message": "无法以 UTF-8 或带 BOM 的 UTF-16 读取文本；原始附件已包含在 ZIP 中。"
+  },
+  "tabShare": {
+    "message": "共享链接"
+  },
+  "msgOnlyTitle": {
+    "message": "仅我选择的消息"
+  },
+  "msgOnlyHint": {
+    "message": "逐条勾选消息；按住 Shift 点击可选择范围。"
+  },
+  "msgAll": {
+    "message": "全部"
+  },
+  "msgAnswers": {
+    "message": "仅回答"
+  },
+  "msgPrompts": {
+    "message": "仅我的提问"
+  },
+  "msgLoading": {
+    "message": "正在加载消息…"
+  },
+  "msgEmpty": {
+    "message": "没有可显示的消息。"
+  },
+  "filterLabel": {
+    "message": "筛选"
+  },
+  "filterAll": {
+    "message": "全部聊天"
+  },
+  "filterNoProject": {
+    "message": "无项目"
+  },
+  "filterArchived": {
+    "message": "已归档"
+  },
+  "filterArchivedShort": {
+    "message": "归档"
+  },
+  "filterGpt": {
+    "message": "GPT 聊天"
+  },
+  "filterProject": {
+    "message": "项目"
+  },
+  "filterFrom": {
+    "message": "开始日期"
+  },
+  "filterTo": {
+    "message": "结束日期"
+  },
+  "pdfNote": {
+    "message": "PDF 会在新标签页中打开打印对话框；目标请选择“另存为 PDF”。无需服务器，没有次数限制。"
+  },
+  "galleryOption": {
+    "message": "图库"
+  },
+  "galleryOptionHint": {
+    "message": "将聊天中的所有图片(包括生成的图片)汇集到一个页面。"
+  },
+  "obsidianOption": {
+    "message": "适用于 Obsidian 的 Markdown"
+  },
+  "obsidianOptionHint": {
+    "message": "添加 YAML 头信息(标题、日期、模型、链接)；笔记以聊天标题命名。"
+  },
+  "incrementalOption": {
+    "message": "仅已更改的聊天"
+  },
+  "incrementalHint": {
+    "message": "跳过自上次备份以来未更新的聊天。"
+  },
+  "incrementalInfo": {
+    "message": "上次备份包含 $P1$ 个聊天；未更改的将被跳过。",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "saveLegend": {
+    "message": "保存到"
+  },
+  "saveZip": {
+    "message": "下载内容(ZIP)"
+  },
+  "saveFolder": {
+    "message": "文件夹"
+  },
+  "folderPick": {
+    "message": "选择文件夹"
+  },
+  "folderNone": {
+    "message": "尚未选择文件夹"
+  },
+  "folderNote": {
+    "message": "文件会写入所选文件夹(例如 Obsidian 仓库)，并更新现有存档和索引。请保持侧边栏打开。"
+  },
+  "advancedTitle": {
+    "message": "高级"
+  },
+  "pageButtonOption": {
+    "message": "ChatGPT 页面上的“下载”按钮"
+  },
+  "pageButtonOptionHint": {
+    "message": "显示在聊天标题栏的分享按钮旁；使用你上次的设置。"
+  },
+  "resetBackup": {
+    "message": "重置备份记录"
+  },
+  "resetBackupDone": {
+    "message": "备份记录已重置；下次备份将包含所有聊天。"
+  },
+  "pageButtonLabel": {
+    "message": "下载"
+  },
+  "pageButtonTitle": {
+    "message": "下载此聊天(聊天下载器)"
+  },
+  "menuExportLink": {
+    "message": "下载此聊天"
+  },
+  "menuExportPage": {
+    "message": "下载当前聊天"
+  },
+  "menuOpenPanel": {
+    "message": "打开聊天下载器面板"
+  },
+  "printTitle": {
+    "message": "PDF"
+  },
+  "printHint": {
+    "message": "在打印对话框中将目标选择为“另存为 PDF”。"
+  },
+  "printButton": {
+    "message": "打印 / 另存为 PDF"
+  },
+  "printExpired": {
+    "message": "此打印页面已过期，请从侧边栏重新生成 PDF。"
+  },
+  "galleryTitle": {
+    "message": "图库"
+  },
+  "galleryImagesWord": {
+    "message": "张图片"
+  },
+  "galleryEmpty": {
+    "message": "本次导出中没有找到图片。"
+  },
+  "renderCanvasUpdated": {
+    "message": "已更新"
+  },
+  "statusWord": {
+    "message": "正在生成 Word 文档…"
+  },
+  "statusPdf": {
+    "message": "正在准备 PDF 页面…"
+  },
+  "statusFolder": {
+    "message": "正在写入文件夹 $P1$/$P2$…",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusDonePdf": {
+    "message": "完成。PDF 已在新标签页中打开；请在打印对话框中选择“另存为 PDF”。"
+  },
+  "statusSkippedUnchanged": {
+    "message": "已跳过 $P1$ 个未更改的聊天。",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "errNoFolder": {
+    "message": "请先选择保存文件夹。"
+  },
+  "errFolderPermission": {
+    "message": "未获得写入该文件夹的权限。"
+  },
+  "errFolder": {
+    "message": "无法写入文件夹。"
+  },
+  "errFolderPanel": {
+    "message": "由于侧边栏已关闭，无法写入文件夹；请保持其打开后重试。"
+  },
+  "errPrint": {
+    "message": "无法打开 PDF 页面。"
+  },
+  "errNoMessages": {
+    "message": "请至少选择一条消息。"
+  }
+}

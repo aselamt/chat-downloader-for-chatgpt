@@ -1,0 +1,547 @@
+{
+  "extName": {
+    "message": "Chat-Downloader für ChatGPT"
+  },
+  "extDescription": {
+    "message": "ChatGPT-Chats mit Anhängen als PDF, Word, Markdown, HTML oder JSON speichern. Läuft lokal; deine Daten bleiben auf deinem Gerät."
+  },
+  "actionTitle": {
+    "message": "Chat-Downloader"
+  },
+  "commandDescription": {
+    "message": "Chat-Downloader-Seitenleiste öffnen"
+  },
+  "tabChat": {
+    "message": "Geöffneter Chat"
+  },
+  "tabSite": {
+    "message": "chatgpt.com – kein gespeicherter Chat geöffnet"
+  },
+  "tabOther": {
+    "message": "Du bist nicht auf einem chatgpt.com-Tab"
+  },
+  "pickLoading": {
+    "message": "Chats werden geladen…"
+  },
+  "pickReload": {
+    "message": "Liste neu laden"
+  },
+  "pickCurrent": {
+    "message": "Offen"
+  },
+  "errListFailed": {
+    "message": "Die Chatliste konnte nicht geladen werden."
+  },
+  "errNoSelection": {
+    "message": "Wähle mindestens einen Chat zum Herunterladen aus."
+  },
+  "scopeLabel": {
+    "message": "Auswählen, was heruntergeladen wird"
+  },
+  "scopeCurrent": {
+    "message": "Offener Chat"
+  },
+  "scopeAll": {
+    "message": "Alle Chats"
+  },
+  "scopeChoose": {
+    "message": "Chats wählen"
+  },
+  "pickTitle": {
+    "message": "Herunterzuladende Chats"
+  },
+  "pickSearch": {
+    "message": "Chats durchsuchen"
+  },
+  "pickAll": {
+    "message": "Alle auswählen"
+  },
+  "pickNone": {
+    "message": "Auswahl aufheben"
+  },
+  "pickCount": {
+    "message": "$P1$ von $P2$ ausgewählt",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "pickStart": {
+    "message": "$P1$ Chats herunterladen",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "pickEmpty": {
+    "message": "Keine passenden Chats."
+  },
+  "htmlRecent": {
+    "message": "Zuletzt"
+  },
+  "htmlSearch": {
+    "message": "Chats durchsuchen"
+  },
+  "htmlPickChat": {
+    "message": "Wähle links einen Chat aus"
+  },
+  "htmlChatsWord": {
+    "message": "Chats"
+  },
+  "htmlMenu": {
+    "message": "Menü öffnen"
+  },
+  "htmlCloseMenu": {
+    "message": "Menü schließen"
+  },
+  "htmlNoMatch": {
+    "message": "Keine passenden Chats."
+  },
+  "renderCopy": {
+    "message": "Kopieren"
+  },
+  "renderCopied": {
+    "message": "Kopiert"
+  },
+  "formatsLegend": {
+    "message": "Formate"
+  },
+  "attachmentsTitle": {
+    "message": "Anhänge mit herunterladen"
+  },
+  "attachmentsHint": {
+    "message": "Hochgeladene Dateien, Bilder und von ChatGPT erzeugte Dateien kommen mit ins ZIP."
+  },
+  "textModeLink": {
+    "message": "Dateiname und Link für TXT/MD-Anhänge"
+  },
+  "textModeLinkHint": {
+    "message": "Der Chattext bleibt kürzer."
+  },
+  "textModeFull": {
+    "message": "Vollständiger Inhalt von TXT/MD-Anhängen"
+  },
+  "textModeFullHint": {
+    "message": "Der Text erscheint unter der zugehörigen Nachricht."
+  },
+  "stepsTitle": {
+    "message": "Werkzeug- und Denkschritte"
+  },
+  "stepsHint": {
+    "message": "Mit Codeausführung, Websuchen und Denkzusammenfassungen."
+  },
+  "bulkNote": {
+    "message": "Alle Chats werden ohne Anhänge exportiert (mit Galerie nur die Bilder). Je nach Anzahl der Chats kann das einige Minuten dauern."
+  },
+  "downloadButton": {
+    "message": "Herunterladen"
+  },
+  "footerLocal": {
+    "message": "Alles läuft in deinem Browser; es werden keine Daten an Dritte gesendet."
+  },
+  "footerDisclaimer": {
+    "message": "Nicht mit OpenAI verbunden. ChatGPT ist eine Marke von OpenAI."
+  },
+  "errOpenChat": {
+    "message": "Öffne zuerst auf chatgpt.com den gespeicherten Chat, den du herunterladen möchtest."
+  },
+  "errWrongSite": {
+    "message": "Öffne für diese Option einen chatgpt.com-Tab."
+  },
+  "errNoFormat": {
+    "message": "Wähle mindestens ein Format aus."
+  },
+  "errNoChat": {
+    "message": "Öffne einen gespeicherten Chat; seine Adresse muss /c/ enthalten."
+  },
+  "errInternal": {
+    "message": "Die Erweiterungsdateien konnten nicht geladen werden; lade die Seite neu und versuche es erneut."
+  },
+  "errRunning": {
+    "message": "In diesem Tab läuft bereits ein Download."
+  },
+  "errSession": {
+    "message": "Sitzung konnte nicht abgerufen werden"
+  },
+  "errNoToken": {
+    "message": "Keine Sitzung gefunden; melde dich bei ChatGPT an und lade die Seite neu."
+  },
+  "errNoConversations": {
+    "message": "Keine Chats zum Herunterladen."
+  },
+  "errNoDownloadUrl": {
+    "message": "Keine Download-Adresse; der Endpunkt hat sich möglicherweise geändert."
+  },
+  "errHtmlInstead": {
+    "message": "Statt der Datei kam eine HTML-Antwort."
+  },
+  "errFormatChanged": {
+    "message": "Das Datenformat der Chats hat sich geändert; ein vollständiges Archiv ist nicht möglich."
+  },
+  "errCouldNotStart": {
+    "message": "Der Download konnte nicht gestartet werden."
+  },
+  "statusStarting": {
+    "message": "Wird gestartet…"
+  },
+  "statusStarted": {
+    "message": "Gestartet. Der Fortschritt wird hier und unten rechts auf der Seite angezeigt."
+  },
+  "statusPreparing": {
+    "message": "Wird vorbereitet…"
+  },
+  "statusFetching": {
+    "message": "Chat wird abgerufen…"
+  },
+  "statusAttachment": {
+    "message": "Anhang $P1$/$P2$: $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusListing": {
+    "message": "Chatliste wird abgerufen… ($P1$)",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "statusBulk": {
+    "message": "Chat $P1$/$P2$: $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusZipping": {
+    "message": "ZIP wird erstellt…"
+  },
+  "statusDone": {
+    "message": "Fertig. Anhänge: $P1$ erfolgreich, $P2$ fehlgeschlagen. Nicht auflösbare Medien: $P3$. Vergleiche den Bericht mit dem Chat. Startet der Download nicht, klicke auf der Seite auf „Datei herunterladen“.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusDoneFile": {
+    "message": "Fertig. Startet der Download nicht, klicke auf der Seite auf „Datei herunterladen“."
+  },
+  "statusDoneBulk": {
+    "message": "Fertig. $P1$ Chats exportiert, $P2$ übersprungen (Details im Bericht). Startet der Download nicht, klicke auf der Seite auf „Datei herunterladen“.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusCancelled": {
+    "message": "Abgebrochen."
+  },
+  "statusFailed": {
+    "message": "Export fehlgeschlagen"
+  },
+  "panelTitle": {
+    "message": "Chat-Downloader"
+  },
+  "panelClose": {
+    "message": "Statusfenster schließen"
+  },
+  "panelCancel": {
+    "message": "Abbrechen"
+  },
+  "panelDownload": {
+    "message": "Datei herunterladen"
+  },
+  "panelCopy": {
+    "message": "Markdown kopieren"
+  },
+  "panelCopied": {
+    "message": "Kopiert ✓"
+  },
+  "panelCopyFailed": {
+    "message": "Kopieren fehlgeschlagen"
+  },
+  "bulkIndexTitle": {
+    "message": "Alle Chats"
+  },
+  "readmeText": {
+    "message": "conversation.json: Alle Chatknoten und Metadaten, wie vom Server geliefert.\nconversation.md / .html / .txt / .docx: Lesbare Fassung des ausgewählten Zweigs.\ngaleri.html: Galerie der Bilder in den Chats (falls ausgewählt).\nekler/: Erfolgreich heruntergeladene Anhänge.\nindirme-raporu.json: Gefundene Anhänge, Fehler und nicht auflösbare Medienverweise.\n\nDiese Erweiterung nutzt inoffizielle interne Datenformate von ChatGPT. Neue Medien-/Anhangtypen werden möglicherweise nicht erkannt. Ein fehlerfreier Bericht garantiert nicht, dass alle Anhänge gefunden wurden; vergleiche ihn mit dem Chat. Abgelaufene oder gelöschte Anhänge können nicht wiederhergestellt werden.\n"
+  },
+  "renderUntitled": {
+    "message": "Unbenannter Chat"
+  },
+  "renderUser": {
+    "message": "Du"
+  },
+  "renderAssistant": {
+    "message": "ChatGPT"
+  },
+  "renderStep": {
+    "message": "Schritt"
+  },
+  "renderThinking": {
+    "message": "Denkprozess"
+  },
+  "renderCreated": {
+    "message": "Erstellt"
+  },
+  "renderUpdated": {
+    "message": "Aktualisiert"
+  },
+  "renderExported": {
+    "message": "Exportiert"
+  },
+  "renderImage": {
+    "message": "Bild"
+  },
+  "renderSources": {
+    "message": "Quellen"
+  },
+  "renderAttachments": {
+    "message": "Anhänge"
+  },
+  "renderAttachmentContent": {
+    "message": "Inhalt des Anhangs"
+  },
+  "renderLeftover": {
+    "message": "Anhänge aus anderen Chatzweigen"
+  },
+  "renderFailed": {
+    "message": "Download fehlgeschlagen"
+  },
+  "renderSkipped": {
+    "message": "nicht heruntergeladen"
+  },
+  "renderTextDecodeError": {
+    "message": "Der Text konnte nicht als UTF-8 oder UTF-16 mit BOM gelesen werden; der Originalanhang liegt im ZIP."
+  },
+  "tabShare": {
+    "message": "Geteilter Link"
+  },
+  "msgOnlyTitle": {
+    "message": "Nur die Nachrichten, die ich auswähle"
+  },
+  "msgOnlyHint": {
+    "message": "Nachrichten einzeln ankreuzen; mit Umschalt einen Bereich wählen."
+  },
+  "msgAll": {
+    "message": "Alle"
+  },
+  "msgAnswers": {
+    "message": "Nur Antworten"
+  },
+  "msgPrompts": {
+    "message": "Nur meine Fragen"
+  },
+  "msgLoading": {
+    "message": "Nachrichten werden geladen…"
+  },
+  "msgEmpty": {
+    "message": "Keine Nachrichten vorhanden."
+  },
+  "filterLabel": {
+    "message": "Filter"
+  },
+  "filterAll": {
+    "message": "Alle Chats"
+  },
+  "filterNoProject": {
+    "message": "Ohne Projekt"
+  },
+  "filterArchived": {
+    "message": "Archiviert"
+  },
+  "filterArchivedShort": {
+    "message": "Archiv"
+  },
+  "filterGpt": {
+    "message": "GPT-Chats"
+  },
+  "filterProject": {
+    "message": "Projekt"
+  },
+  "filterFrom": {
+    "message": "Ab Datum"
+  },
+  "filterTo": {
+    "message": "Bis Datum"
+  },
+  "pdfNote": {
+    "message": "Das PDF öffnet sich in einem neuen Tab mit dem Druckdialog; wähle „Als PDF speichern“ als Ziel. Kein Server, keine Limits."
+  },
+  "galleryOption": {
+    "message": "Bildergalerie"
+  },
+  "galleryOptionHint": {
+    "message": "Sammelt alle Bilder der Chats (auch erzeugte) auf einer Seite."
+  },
+  "obsidianOption": {
+    "message": "Obsidian-taugliches Markdown"
+  },
+  "obsidianOptionHint": {
+    "message": "Fügt YAML-Frontmatter hinzu (Titel, Datum, Modell, Link); die Notiz trägt den Chattitel."
+  },
+  "incrementalOption": {
+    "message": "Nur geänderte Chats"
+  },
+  "incrementalHint": {
+    "message": "Seit der letzten Sicherung unveränderte Chats werden übersprungen."
+  },
+  "incrementalInfo": {
+    "message": "Die letzte Sicherung enthält $P1$ Chats; unveränderte werden übersprungen.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "saveLegend": {
+    "message": "Speichern in"
+  },
+  "saveZip": {
+    "message": "Downloads (ZIP)"
+  },
+  "saveFolder": {
+    "message": "Einen Ordner"
+  },
+  "folderPick": {
+    "message": "Ordner wählen"
+  },
+  "folderNone": {
+    "message": "Kein Ordner gewählt"
+  },
+  "folderNote": {
+    "message": "Dateien werden in den gewählten Ordner geschrieben (z. B. einen Obsidian-Vault); Archiv und Index werden aktualisiert. Lass die Seitenleiste geöffnet."
+  },
+  "advancedTitle": {
+    "message": "Erweitert"
+  },
+  "pageButtonOption": {
+    "message": "„Herunterladen“-Knopf auf der ChatGPT-Seite"
+  },
+  "pageButtonOptionHint": {
+    "message": "Neben dem Teilen-Knopf im Chatkopf; nutzt deine letzten Einstellungen."
+  },
+  "resetBackup": {
+    "message": "Sicherungsverlauf zurücksetzen"
+  },
+  "resetBackupDone": {
+    "message": "Sicherungsverlauf zurückgesetzt; die nächste Sicherung enthält alle Chats."
+  },
+  "pageButtonLabel": {
+    "message": "Herunterladen"
+  },
+  "pageButtonTitle": {
+    "message": "Diesen Chat herunterladen (Chat-Downloader)"
+  },
+  "menuExportLink": {
+    "message": "Diesen Chat herunterladen"
+  },
+  "menuExportPage": {
+    "message": "Geöffneten Chat herunterladen"
+  },
+  "menuOpenPanel": {
+    "message": "Chat-Downloader-Seitenleiste öffnen"
+  },
+  "printTitle": {
+    "message": "PDF"
+  },
+  "printHint": {
+    "message": "Wähle im Druckdialog „Als PDF speichern“ als Ziel."
+  },
+  "printButton": {
+    "message": "Drucken / Als PDF speichern"
+  },
+  "printExpired": {
+    "message": "Diese Druckseite ist abgelaufen; erstelle das PDF erneut über die Seitenleiste."
+  },
+  "galleryTitle": {
+    "message": "Bildergalerie"
+  },
+  "galleryImagesWord": {
+    "message": "Bilder"
+  },
+  "galleryEmpty": {
+    "message": "In diesem Export wurden keine Bilder gefunden."
+  },
+  "renderCanvasUpdated": {
+    "message": "aktualisiert"
+  },
+  "statusWord": {
+    "message": "Word-Dokument wird erstellt…"
+  },
+  "statusPdf": {
+    "message": "PDF-Seite wird vorbereitet…"
+  },
+  "statusFolder": {
+    "message": "Schreibe in den Ordner $P1$/$P2$…",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusDonePdf": {
+    "message": "Fertig. Das PDF wurde in einem neuen Tab geöffnet; wähle im Druckdialog „Als PDF speichern“."
+  },
+  "statusSkippedUnchanged": {
+    "message": "$P1$ unveränderte Chats übersprungen.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "errNoFolder": {
+    "message": "Wähle zuerst den Zielordner."
+  },
+  "errFolderPermission": {
+    "message": "Die Schreibberechtigung für den Ordner wurde nicht erteilt."
+  },
+  "errFolder": {
+    "message": "In den Ordner konnte nicht geschrieben werden."
+  },
+  "errFolderPanel": {
+    "message": "In den Ordner konnte nicht geschrieben werden, weil die Seitenleiste geschlossen wurde; lass sie geöffnet und versuche es erneut."
+  },
+  "errPrint": {
+    "message": "Die PDF-Seite konnte nicht geöffnet werden."
+  },
+  "errNoMessages": {
+    "message": "Wähle mindestens eine Nachricht aus."
+  }
+}

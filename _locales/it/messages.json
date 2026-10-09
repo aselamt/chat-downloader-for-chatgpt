@@ -1,0 +1,547 @@
+{
+  "extName": {
+    "message": "Scarica chat per ChatGPT"
+  },
+  "extDescription": {
+    "message": "Salva le chat di ChatGPT in PDF, Word, Markdown, HTML o JSON con gli allegati. Funziona in locale; i dati restano sul dispositivo."
+  },
+  "actionTitle": {
+    "message": "Scarica chat"
+  },
+  "commandDescription": {
+    "message": "Apri il pannello di Scarica chat"
+  },
+  "tabChat": {
+    "message": "Chat aperta"
+  },
+  "tabSite": {
+    "message": "chatgpt.com — nessuna chat salvata aperta"
+  },
+  "tabOther": {
+    "message": "Non sei in una scheda di chatgpt.com"
+  },
+  "pickLoading": {
+    "message": "Caricamento delle chat…"
+  },
+  "pickReload": {
+    "message": "Ricarica elenco"
+  },
+  "pickCurrent": {
+    "message": "Aperta"
+  },
+  "errListFailed": {
+    "message": "Impossibile caricare l'elenco delle chat."
+  },
+  "errNoSelection": {
+    "message": "Seleziona almeno una chat da scaricare."
+  },
+  "scopeLabel": {
+    "message": "Scegli cosa scaricare"
+  },
+  "scopeCurrent": {
+    "message": "Chat aperta"
+  },
+  "scopeAll": {
+    "message": "Tutte"
+  },
+  "scopeChoose": {
+    "message": "Scegli chat"
+  },
+  "pickTitle": {
+    "message": "Chat da scaricare"
+  },
+  "pickSearch": {
+    "message": "Cerca chat"
+  },
+  "pickAll": {
+    "message": "Seleziona tutto"
+  },
+  "pickNone": {
+    "message": "Deseleziona"
+  },
+  "pickCount": {
+    "message": "$P1$ di $P2$ selezionate",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "pickStart": {
+    "message": "Scarica $P1$ chat",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "pickEmpty": {
+    "message": "Nessuna chat corrispondente."
+  },
+  "htmlRecent": {
+    "message": "Recenti"
+  },
+  "htmlSearch": {
+    "message": "Cerca chat"
+  },
+  "htmlPickChat": {
+    "message": "Scegli una chat a sinistra"
+  },
+  "htmlChatsWord": {
+    "message": "chat"
+  },
+  "htmlMenu": {
+    "message": "Apri menu"
+  },
+  "htmlCloseMenu": {
+    "message": "Chiudi menu"
+  },
+  "htmlNoMatch": {
+    "message": "Nessuna chat corrispondente."
+  },
+  "renderCopy": {
+    "message": "Copia"
+  },
+  "renderCopied": {
+    "message": "Copiato"
+  },
+  "formatsLegend": {
+    "message": "Formati"
+  },
+  "attachmentsTitle": {
+    "message": "Scarica anche gli allegati"
+  },
+  "attachmentsHint": {
+    "message": "File caricati, immagini e file creati da ChatGPT vengono aggiunti allo ZIP."
+  },
+  "textModeLink": {
+    "message": "Nome e link per gli allegati TXT/MD"
+  },
+  "textModeLinkHint": {
+    "message": "Il testo della chat resta più breve."
+  },
+  "textModeFull": {
+    "message": "Contenuto completo degli allegati TXT/MD"
+  },
+  "textModeFullHint": {
+    "message": "Il testo appare sotto il messaggio a cui appartiene."
+  },
+  "stepsTitle": {
+    "message": "Passaggi di strumenti e ragionamento"
+  },
+  "stepsHint": {
+    "message": "Include esecuzione di codice, ricerche web e riepiloghi del ragionamento."
+  },
+  "bulkNote": {
+    "message": "Tutte le chat vengono esportate senza allegati (solo immagini se la galleria è attiva). Può richiedere alcuni minuti in base al numero di chat."
+  },
+  "downloadButton": {
+    "message": "Scarica"
+  },
+  "footerLocal": {
+    "message": "Tutto avviene nel browser; nessun dato viene inviato a terzi."
+  },
+  "footerDisclaimer": {
+    "message": "Non affiliato con OpenAI. ChatGPT è un marchio di OpenAI."
+  },
+  "errOpenChat": {
+    "message": "Apri prima su chatgpt.com la chat salvata che vuoi scaricare."
+  },
+  "errWrongSite": {
+    "message": "Apri una scheda di chatgpt.com per usare questa opzione."
+  },
+  "errNoFormat": {
+    "message": "Seleziona almeno un formato."
+  },
+  "errNoChat": {
+    "message": "Apri una chat salvata; l'indirizzo deve contenere /c/."
+  },
+  "errInternal": {
+    "message": "Impossibile caricare i file dell'estensione; ricarica la pagina e riprova."
+  },
+  "errRunning": {
+    "message": "In questa scheda è già in corso un download."
+  },
+  "errSession": {
+    "message": "Impossibile ottenere la sessione"
+  },
+  "errNoToken": {
+    "message": "Nessuna sessione trovata; accedi a ChatGPT e ricarica la pagina."
+  },
+  "errNoConversations": {
+    "message": "Nessuna chat da scaricare."
+  },
+  "errNoDownloadUrl": {
+    "message": "Nessun indirizzo di download; il servizio potrebbe essere cambiato."
+  },
+  "errHtmlInstead": {
+    "message": "È arrivata una risposta HTML invece del file."
+  },
+  "errFormatChanged": {
+    "message": "Il formato dei dati è cambiato; impossibile creare un archivio completo."
+  },
+  "errCouldNotStart": {
+    "message": "Impossibile avviare il download."
+  },
+  "statusStarting": {
+    "message": "Avvio…"
+  },
+  "statusStarted": {
+    "message": "Avviato. L'avanzamento è mostrato qui e in basso a destra nella pagina."
+  },
+  "statusPreparing": {
+    "message": "Preparazione…"
+  },
+  "statusFetching": {
+    "message": "Recupero della chat…"
+  },
+  "statusAttachment": {
+    "message": "Allegato $P1$/$P2$: $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusListing": {
+    "message": "Recupero dell'elenco… ($P1$)",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "statusBulk": {
+    "message": "Chat $P1$/$P2$: $P3$",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusZipping": {
+    "message": "Creazione dello ZIP…"
+  },
+  "statusDone": {
+    "message": "Fatto. Allegati: $P1$ riusciti, $P2$ non riusciti. Media non risolti: $P3$. Confronta il rapporto con la chat. Se il download non parte, fai clic su “Scarica file” nella pagina.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "statusDoneFile": {
+    "message": "Fatto. Se il download non parte, fai clic su “Scarica file” nella pagina."
+  },
+  "statusDoneBulk": {
+    "message": "Fatto. $P1$ chat esportate, $P2$ saltate (vedi il rapporto). Se il download non parte, fai clic su “Scarica file” nella pagina.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusCancelled": {
+    "message": "Annullato."
+  },
+  "statusFailed": {
+    "message": "Esportazione non riuscita"
+  },
+  "panelTitle": {
+    "message": "Scarica chat"
+  },
+  "panelClose": {
+    "message": "Chiudi finestra di stato"
+  },
+  "panelCancel": {
+    "message": "Annulla"
+  },
+  "panelDownload": {
+    "message": "Scarica file"
+  },
+  "panelCopy": {
+    "message": "Copia Markdown"
+  },
+  "panelCopied": {
+    "message": "Copiato ✓"
+  },
+  "panelCopyFailed": {
+    "message": "Impossibile copiare"
+  },
+  "bulkIndexTitle": {
+    "message": "Tutte le chat"
+  },
+  "readmeText": {
+    "message": "conversation.json: tutti i nodi della chat e i relativi metadati, come restituiti dal server.\nconversation.md / .html / .txt / .docx: versione leggibile del ramo selezionato.\ngaleri.html: galleria delle immagini delle chat (se selezionata).\nekler/: allegati scaricati correttamente.\nindirme-raporu.json: allegati trovati, errori e media non risolti.\n\nQuesta estensione usa formati di dati interni non ufficiali di ChatGPT. Nuovi tipi di media o allegati potrebbero non essere riconosciuti. Un rapporto senza errori non garantisce che tutti gli allegati siano stati trovati; confrontalo con la chat. Gli allegati scaduti o eliminati non possono essere recuperati.\n"
+  },
+  "renderUntitled": {
+    "message": "Chat senza titolo"
+  },
+  "renderUser": {
+    "message": "Tu"
+  },
+  "renderAssistant": {
+    "message": "ChatGPT"
+  },
+  "renderStep": {
+    "message": "Passaggio"
+  },
+  "renderThinking": {
+    "message": "Ragionamento"
+  },
+  "renderCreated": {
+    "message": "Creata"
+  },
+  "renderUpdated": {
+    "message": "Aggiornata"
+  },
+  "renderExported": {
+    "message": "Esportata"
+  },
+  "renderImage": {
+    "message": "immagine"
+  },
+  "renderSources": {
+    "message": "Fonti"
+  },
+  "renderAttachments": {
+    "message": "Allegati"
+  },
+  "renderAttachmentContent": {
+    "message": "Contenuto dell'allegato"
+  },
+  "renderLeftover": {
+    "message": "Allegati da altri rami della chat"
+  },
+  "renderFailed": {
+    "message": "download non riuscito"
+  },
+  "renderSkipped": {
+    "message": "non scaricato"
+  },
+  "renderTextDecodeError": {
+    "message": "Impossibile leggere il testo come UTF-8 o UTF-16 con BOM; l'allegato originale è nello ZIP."
+  },
+  "tabShare": {
+    "message": "Link condiviso"
+  },
+  "msgOnlyTitle": {
+    "message": "Solo i messaggi che scelgo"
+  },
+  "msgOnlyHint": {
+    "message": "Spunta i messaggi uno a uno; Maiusc+clic per un intervallo."
+  },
+  "msgAll": {
+    "message": "Tutti"
+  },
+  "msgAnswers": {
+    "message": "Solo risposte"
+  },
+  "msgPrompts": {
+    "message": "Solo le mie domande"
+  },
+  "msgLoading": {
+    "message": "Caricamento dei messaggi…"
+  },
+  "msgEmpty": {
+    "message": "Nessun messaggio da mostrare."
+  },
+  "filterLabel": {
+    "message": "Filtro"
+  },
+  "filterAll": {
+    "message": "Tutte le chat"
+  },
+  "filterNoProject": {
+    "message": "Senza progetto"
+  },
+  "filterArchived": {
+    "message": "Archiviate"
+  },
+  "filterArchivedShort": {
+    "message": "Archivio"
+  },
+  "filterGpt": {
+    "message": "Chat con GPT"
+  },
+  "filterProject": {
+    "message": "Progetto"
+  },
+  "filterFrom": {
+    "message": "Dalla data"
+  },
+  "filterTo": {
+    "message": "Alla data"
+  },
+  "pdfNote": {
+    "message": "Il PDF si apre in una nuova scheda con la finestra di stampa; scegli “Salva come PDF”. Nessun server, nessun limite."
+  },
+  "galleryOption": {
+    "message": "Galleria di immagini"
+  },
+  "galleryOptionHint": {
+    "message": "Raccoglie tutte le immagini delle chat (anche quelle generate) in una pagina."
+  },
+  "obsidianOption": {
+    "message": "Markdown compatibile con Obsidian"
+  },
+  "obsidianOptionHint": {
+    "message": "Aggiunge frontmatter YAML (titolo, date, modello, link); la nota prende il titolo della chat."
+  },
+  "incrementalOption": {
+    "message": "Solo chat modificate"
+  },
+  "incrementalHint": {
+    "message": "Le chat non modificate dall'ultimo backup vengono saltate."
+  },
+  "incrementalInfo": {
+    "message": "L'ultimo backup contiene $P1$ chat; quelle non modificate vengono saltate.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "saveLegend": {
+    "message": "Salva in"
+  },
+  "saveZip": {
+    "message": "Download (ZIP)"
+  },
+  "saveFolder": {
+    "message": "Una cartella"
+  },
+  "folderPick": {
+    "message": "Scegli cartella"
+  },
+  "folderNone": {
+    "message": "Nessuna cartella scelta"
+  },
+  "folderNote": {
+    "message": "I file vengono scritti nella cartella scelta (es. un vault di Obsidian); archivio e indice esistenti vengono aggiornati. Tieni aperto il pannello."
+  },
+  "advancedTitle": {
+    "message": "Avanzate"
+  },
+  "pageButtonOption": {
+    "message": "Pulsante “Scarica” nella pagina di ChatGPT"
+  },
+  "pageButtonOptionHint": {
+    "message": "Accanto al pulsante Condividi; usa le tue ultime impostazioni."
+  },
+  "resetBackup": {
+    "message": "Reimposta cronologia backup"
+  },
+  "resetBackupDone": {
+    "message": "Cronologia reimpostata; il prossimo backup includerà tutte le chat."
+  },
+  "pageButtonLabel": {
+    "message": "Scarica"
+  },
+  "pageButtonTitle": {
+    "message": "Scarica questa chat (Scarica chat)"
+  },
+  "menuExportLink": {
+    "message": "Scarica questa chat"
+  },
+  "menuExportPage": {
+    "message": "Scarica la chat aperta"
+  },
+  "menuOpenPanel": {
+    "message": "Apri il pannello di Scarica chat"
+  },
+  "printTitle": {
+    "message": "PDF"
+  },
+  "printHint": {
+    "message": "Nella finestra di stampa scegli “Salva come PDF” come destinazione."
+  },
+  "printButton": {
+    "message": "Stampa / Salva come PDF"
+  },
+  "printExpired": {
+    "message": "Questa pagina di stampa è scaduta; crea di nuovo il PDF dal pannello laterale."
+  },
+  "galleryTitle": {
+    "message": "Galleria di immagini"
+  },
+  "galleryImagesWord": {
+    "message": "immagini"
+  },
+  "galleryEmpty": {
+    "message": "Nessuna immagine trovata in questa esportazione."
+  },
+  "renderCanvasUpdated": {
+    "message": "aggiornato"
+  },
+  "statusWord": {
+    "message": "Creazione del documento Word…"
+  },
+  "statusPdf": {
+    "message": "Preparazione della pagina PDF…"
+  },
+  "statusFolder": {
+    "message": "Scrittura nella cartella $P1$/$P2$…",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "statusDonePdf": {
+    "message": "Fatto. Il PDF si è aperto in una nuova scheda; scegli “Salva come PDF” nella finestra di stampa."
+  },
+  "statusSkippedUnchanged": {
+    "message": "$P1$ chat non modificate sono state saltate.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "errNoFolder": {
+    "message": "Scegli prima la cartella di destinazione."
+  },
+  "errFolderPermission": {
+    "message": "Permesso di scrittura nella cartella non concesso."
+  },
+  "errFolder": {
+    "message": "Impossibile scrivere nella cartella."
+  },
+  "errFolderPanel": {
+    "message": "Impossibile scrivere nella cartella perché il pannello è stato chiuso; tienilo aperto e riprova."
+  },
+  "errPrint": {
+    "message": "Impossibile aprire la pagina PDF."
+  },
+  "errNoMessages": {
+    "message": "Seleziona almeno un messaggio."
+  }
+}

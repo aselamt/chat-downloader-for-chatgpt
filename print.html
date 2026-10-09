@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF</title>
+  <link rel="stylesheet" href="print.css">
+  <script src="print.js" defer></script>
+</head>
+<body>
+  <header class="bar">
+    <img src="icons/icon32.png" alt="" width="22" height="22">
+    <strong id="title" data-i18n="printTitle"></strong>
+    <span id="hint" data-i18n="printHint"></span>
+    <button id="print" type="button" data-i18n="printButton" disabled></button>
+  </header>
+  <p id="error" hidden></p>
+  <iframe id="frame" title="PDF" sandbox="allow-same-origin allow-modals"></iframe>
+</body>
+</html>
